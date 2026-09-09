@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCtj0lgnGjLbpW51Ttioo4gxMWSVZw16VM",
+  apiKey: "AIzaSyCtjOlgnGjLbpW51Ttioo4gxMWSVZw16VM",
   authDomain: "cafepark-d1ebf.firebaseapp.com",
   databaseURL: "https://cafepark-d1ebf-default-rtdb.firebaseio.com",
   projectId: "cafepark-d1ebf",
