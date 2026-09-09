@@ -1,0 +1,29 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Cafe Park Menü Yönetimi</title><link rel="stylesheet" href="admin.css"></head><body>
+<div id="loginView" class="login"><div class="panel"><h2>Cafe Park Yönetim</h2><form id="loginForm"><div class="field"><label>E-posta</label><input id="email" type="email" required></div><div class="field"><label>Şifre</label><input id="password" type="password" required></div><div class="actions"><button class="btn primary">Giriş Yap</button></div><div id="loginMsg" class="small"></div></form></div></div>
+<div id="appView" class="hidden">
+ <div class="adminbar"><div class="wrap"><b>Cafe Park Menü Yönetimi</b><div><button id="newBtn" class="btn ghost">+ Yeni</button> <button id="logout" class="btn danger">Çıkış</button></div></div></div>
+ <main class="wrap">
+  <div class="panel">
+   <form id="form">
+    <div class="row two"><div class="field"><label>Ürün adı</label><input id="name" required></div><div class="field"><label>Kategori</label><input id="category" list="catslist" required><datalist id="catslist"><option>Sıcak İçecekler</option><option>Sıcak Kahveler</option><option>Soğuk Kahveler</option><option>Bitki Çayları</option><option>Limonatalar</option><option>Frozen</option><option>Milkshake</option><option>Özel İçecekler</option><option>Soğuk İçecekler</option><option>Su & Soda</option><option>Atıştırmalıklar</option></datalist></div></div>
+    <div class="row three">
+      <div class="field"><label>Fiyat (₺)</label><input id="price" type="number" min="0" step="1" required></div>
+      <div class="field"><label>Sıra</label><input id="sort" type="number" value="10"></div>
+      <div class="field"><label>Fotoğraf</label><input id="image" type="file" accept="image/*"></div>
+    </div>
+    <div class="field">
+      <label>Fotoğraf önizleme</label>
+      <img id="imagePreview" class="thumb" style="width:110px;height:110px;margin-top:4px" alt="Önizleme">
+      <button id="removeImageBtn" class="btn ghost hidden" type="button" style="margin-left:8px">Fotoğrafı Kaldır</button>
+      <div class="small">Fotoğraf otomatik küçültülür ve Firestore'a kaydedilir. Firebase Storage gerekmez.</div>
+    </div>
+    <div class="field"><label>Açıklama</label><textarea id="description"></textarea></div>
+    <div class="actions"><label><input id="active" type="checkbox" checked> Menüde göster</label><label><input id="featured" type="checkbox"> Öne çıkar</label></div>
+    <div class="actions"><button id="saveBtn" class="btn primary" type="submit">Ürünü Kaydet</button><button id="deleteBtn" class="btn danger hidden" type="button">Sil</button><button id="seedBtn" class="btn ghost" type="button">Başlangıç Menüsünü Yükle</button></div>
+    <div id="status" class="small"></div>
+   </form>
+  </div>
+  <div id="items"></div>
+ </main>
+</div>
+<script type="module" src="admin.js"></script></body></html>
