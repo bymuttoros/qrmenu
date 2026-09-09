@@ -269,6 +269,15 @@ main{max-width:920px;margin:auto;padding:14px 12px 105px}
   </div>
 </div>
 
+<button id="topBtn" class="top-btn hidden" type="button" aria-label="Yukarı çık">↑</button>
+
+<div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Kapat">×</button>
+    <img id="lightboxImg" alt="">
+  </div>
+</div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
@@ -311,13 +320,13 @@ function closeLightbox(){
  lightboxImg.src="";
  document.body.style.overflow="";
 }
-lightboxClose.onclick=closeLightbox;
-lightbox.onclick=e=>{ if(e.target===lightbox) closeLightbox(); };
+if(lightboxClose) lightboxClose.onclick=closeLightbox;
+if(lightbox) lightbox.onclick=e=>{ if(e.target===lightbox) closeLightbox(); };
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeLightbox(); });
 
-topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+if(topBtn) topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
 window.addEventListener("scroll",()=>{
- topBtn.classList.toggle("hidden",window.scrollY<500);
+ if(topBtn) topBtn.classList.toggle("hidden",window.scrollY<500);
 });
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
@@ -381,6 +390,20 @@ function render(q=""){
     <div class="grid">${list.map(x=>card(x)).join("")}</div>
    </section>`;
  }).join("");
+
+ bindImagePreview();
+
+ const sections=[...document.querySelectorAll(".section")];
+ const buttons=[...catsEl.querySelectorAll("button")];
+ if(window._catObserver) window._catObserver.disconnect();
+ window._catObserver=new IntersectionObserver(entries=>{
+   const visible=entries
+     .filter(e=>e.isIntersecting)
+     .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+   if(!visible) return;
+   buttons.forEach(b=>b.classList.toggle("active",b.dataset.id===visible.target.id));
+ },{rootMargin:"-140px 0px -55% 0px",threshold:[0,.15,.4]});
+ sections.forEach(s=>window._catObserver.observe(s));
 }
 
 searchEl.addEventListener("input",e=>render(e.target.value));
