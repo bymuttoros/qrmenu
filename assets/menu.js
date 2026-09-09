@@ -5,42 +5,122 @@ import { firebaseConfig } from "../firebase-config.js";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const menuEl = document.querySelector("#menu");
-const catsEl = document.querySelector("#cats");
-const featuredEl = document.querySelector("#featured");
+
 const searchEl = document.querySelector("#search");
+const catsEl = document.querySelector("#cats");
+const featuredWrap = document.querySelector("#featuredWrap");
+const featuredList = document.querySelector("#featuredList");
+const sectionsEl = document.querySelector("#sections");
+const itemCountEl = document.querySelector("#itemCount");
+
 let allItems = [];
 
-const esc = s => String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-function card(x){
-  const img = x.imageUrl ? `<img src="${esc(x.imageUrl)}" alt="${esc(x.name)}" loading="lazy">` : `<img alt="" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect width='160' height='160' fill='%23eaf1f4'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-size='48'%3E☕%3C/text%3E%3C/svg%3E">`;
-  return `<div class="card">${img}<div class="info"><div class="name">${esc(x.name)}</div>${x.description?`<div class="desc">${esc(x.description)}</div>`:""}${x.featured?`<span class="badge">ÖNE ÇIKAN</span>`:""}</div><div class="price">${Number(x.price||0).toLocaleString("tr-TR")} ₺</div></div>`;
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (m) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[m]));
+const slug = (s) => String(s || "").toLocaleLowerCase("tr-TR")
+  .replaceAll("ı","i").replaceAll("ğ","g").replaceAll("ü","u").replaceAll("ş","s").replaceAll("ö","o").replaceAll("ç","c")
+  .replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+
+const emojiForCategory = (cat) => {
+  const c = String(cat || "").toLocaleLowerCase("tr-TR");
+  if (c.includes("kahve")) return "☕";
+  if (c.includes("frozen")) return "🧊";
+  if (c.includes("milkshake")) return "🥤";
+  if (c.includes("limonata")) return "🍋";
+  if (c.includes("çay")) return "🍵";
+  if (c.includes("özel")) return "✨";
+  if (c.includes("su")) return "💧";
+  if (c.includes("atıştır")) return "🍿";
+  return "•";
+};
+
+const fallbackSVG = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="100%" height="100%" fill="#efe6d0"/><text x="50%" y="54%" text-anchor="middle" font-size="88">☕</text></svg>`);
+const fallbackImage = `data:image/svg+xml;charset=UTF-8,${fallbackSVG}`;
+
+function card(item, featured=false){
+  const img = item.imageUrl
+    ? `<img src="${esc(item.imageUrl)}" alt="${esc(item.name)}" loading="lazy">`
+    : `<img src="${fallbackImage}" alt="">`;
+  const cls = featured ? "featured-card" : "product-card";
+  return `
+    <article class="card ${cls}">
+      <div class="thumb">${img}</div>
+      <div class="content">
+        <div class="badges">
+          ${item.featured ? `<span class="badge featured">★ Öne Çıkan</span>` : ``}
+          ${featured ? `<span class="badge category">${esc(item.category)}</span>` : ``}
+        </div>
+        <div class="name">${esc(item.name)}</div>
+        ${item.description ? `<div class="desc">${esc(item.description)}</div>` : ``}
+        <div class="price-row">
+          <div class="price">${Number(item.price || 0).toLocaleString("tr-TR")} ₺</div>
+          <div class="cta">Afiyet olsun</div>
+        </div>
+      </div>
+    </article>
+  `;
 }
+
 function render(filter=""){
-  const f = filter.toLocaleLowerCase("tr-TR").trim();
-  const items = allItems.filter(x=>x.active!==false && (!f || `${x.name} ${x.category} ${x.description||""}`.toLocaleLowerCase("tr-TR").includes(f)));
-  const cats = [...new Set(items.map(x=>x.category))];
-  catsEl.innerHTML = cats.map(c=>`<button data-cat="${esc(c)}">${esc(c)}</button>`).join("");
-  catsEl.querySelectorAll("button").forEach(b=>b.onclick=()=>{
-    const el=document.getElementById("cat-"+b.dataset.cat.replace(/[^a-zA-Z0-9ğüşöçıİĞÜŞÖÇ]+/g,"-"));
-    if(el) el.scrollIntoView({behavior:"smooth",block:"start"});
+  const q = filter.trim().toLocaleLowerCase("tr-TR");
+  const items = allItems.filter(x => x.active !== false && (!q || `${x.name} ${x.category} ${x.description || ""}`.toLocaleLowerCase("tr-TR").includes(q)));
+
+  itemCountEl.textContent = `${items.length} ürün`;
+  const categories = [...new Set(items.map(x => x.category))];
+
+  catsEl.innerHTML = categories.map(cat => `
+    <button data-target="${slug(cat)}">${emojiForCategory(cat)} ${esc(cat)}</button>
+  `).join("");
+
+  catsEl.querySelectorAll("button").forEach(btn => {
+    btn.onclick = () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
   });
 
-  const featured = items.filter(x=>x.featured);
-  featuredEl.innerHTML = featured.length ? `<div class="featured-title">Öne Çıkanlar</div><div class="grid">${featured.map(card).join("")}</div>` : "";
+  const featured = items.filter(x => x.featured);
+  if (featured.length){
+    featuredWrap.classList.remove("hidden");
+    featuredList.innerHTML = featured.map(x => card(x, true)).join("");
+  } else {
+    featuredWrap.classList.add("hidden");
+    featuredList.innerHTML = "";
+  }
 
-  menuEl.innerHTML = cats.map(c=>{
-    const ci=items.filter(x=>x.category===c).sort((a,b)=>(a.sort||0)-(b.sort||0));
-    const id="cat-"+c.replace(/[^a-zA-Z0-9ğüşöçıİĞÜŞÖÇ]+/g,"-");
-    return `<section id="${id}"><div class="section-title">${esc(c)}</div><div class="grid">${ci.map(card).join("")}</div></section>`;
-  }).join("") || `<div class="empty">Ürün bulunamadı.</div>`;
+  sectionsEl.innerHTML = categories.map(cat => {
+    const list = items.filter(x => x.category === cat);
+    return `
+      <section class="section" id="${slug(cat)}">
+        <div class="section-head">
+          <h3>${emojiForCategory(cat)} ${esc(cat)}</h3>
+          <div class="muted">${list.length} ürün</div>
+        </div>
+        <div class="product-grid">
+          ${list.map(x => card(x)).join("")}
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  if (!items.length){
+    featuredWrap.classList.add("hidden");
+    sectionsEl.innerHTML = `<div class="empty">Aradığınız ürün bulunamadı.</div>`;
+  }
 }
-searchEl.addEventListener("input",e=>render(e.target.value));
-const q=query(collection(db,"menu"),orderBy("category"),orderBy("sort"));
-onSnapshot(q,s=>{
-  allItems=s.docs.map(d=>({id:d.id,...d.data()}));
+
+searchEl.addEventListener("input", e => render(e.target.value));
+
+const q = query(collection(db, "menu"), orderBy("category"));
+onSnapshot(q, snap => {
+  allItems = snap.docs
+    .map(d => ({ id: d.id, ...d.data() }))
+    .sort((a,b) => {
+      const cat = String(a.category || "").localeCompare(String(b.category || ""), "tr");
+      return cat !== 0 ? cat : Number(a.sort || 0) - Number(b.sort || 0);
+    });
   render(searchEl.value);
-},e=>{
-  menuEl.innerHTML=`<div class="empty">Menü yüklenemedi. Firebase ayarlarını kontrol edin.</div>`;
-  console.error(e);
+}, err => {
+  console.error(err);
+  featuredWrap.classList.add("hidden");
+  sectionsEl.innerHTML = `<div class="empty">Menü yüklenemedi. Lütfen tekrar deneyin.</div>`;
 });

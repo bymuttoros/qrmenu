@@ -1,0 +1,27 @@
+CAFE PARK QR MENU - TASARIM V2
+
+Bu paket mevcut çalışan sistemin görünümünü yeniler.
+GitHub reposundaki mevcut dosyaların yerine bunu yükleyebilirsiniz.
+
+ÖZELLİKLER
+- Yeni müşteri menüsü tasarımı
+- Logo uyumlu krem / altın / yeşil renkler
+- Kategori çipleri
+- Arama alanı
+- Öne çıkan ürünler alanı
+- Geliştirilmiş admin paneli
+- Fotoğraf önizleme ve Firestore tabanlı görsel kaydı
+
+YÜKLENECEK DOSYALAR
+- index.html
+- firebase-config.js
+- seed-menu.json
+- assets/
+- admin/
+- .nojekyll
+
+QR adresi değişmez:
+https://bymuttoros.github.io/qrmenu/
+
+Admin adresi değişmez:
+https://bymuttoros.github.io/qrmenu/admin/

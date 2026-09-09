@@ -1,8 +1,63 @@
-<!doctype html><html lang="tr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d4f73"><title>Cafe Park Hassa | Menü</title>
-<link rel="stylesheet" href="assets/style.css"></head><body>
-<header class="hero"><div class="wrap"><div class="brand"><div class="logo">CP</div><div><h1>Cafe Park</h1><div class="sub">15 Kasım Gürhan Ergüneş Parkı • Hassa</div></div></div></div></header>
-<div class="sticky"><div id="cats" class="cats"></div></div>
-<main><input id="search" class="search" type="search" placeholder="Menüde ara…"><div id="featured"></div><div id="menu" class="loading">Menü yükleniyor…</div></main>
-<script type="module" src="assets/menu.js"></script></body></html>
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0f4f39">
+  <title>Cafe Park Hassa | QR Menü</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-box">
+      <div class="hero-top">
+        <div class="logo-wrap"><img src="assets/logo.png" alt="Cafe Park Logo"></div>
+        <div>
+          <h1 class="brand-title">Cafe Park</h1>
+          <div class="brand-sub">Kahve • Lezzet • Huzur • Hassa</div>
+        </div>
+      </div>
+      <div class="hero-note">
+        <span class="note-chip">QR Menü</span>
+        <span class="note-chip">Güncel Fiyatlar</span>
+        <span class="note-chip">Telefon Uyumlu</span>
+        <span class="note-chip" id="itemCount">Yükleniyor…</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="topbar">
+    <div class="wrap inner">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="search" class="search" type="search" placeholder="Ürün ara… örn. latte, frozen, çay">
+      </div>
+      <div id="cats" class="cats"></div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="featuredWrap" class="hidden">
+      <div class="section-head">
+        <h2>✨ Öne Çıkanlar</h2>
+        <div class="muted">Özel seçimler</div>
+      </div>
+      <div id="featuredList" class="featured-list"></div>
+    </section>
+
+    <div id="sections" class="loading">Menü yükleniyor…</div>
+  </main>
+
+  <div class="footer-bar">
+    <div class="box">
+      <div>
+        <div class="footer-title">Cafe Park Hassa</div>
+        <div class="footer-sub">Lezzetli içecekler ve keyifli anlar</div>
+      </div>
+      <a class="footer-link" href="https://instagram.com/cafeparkhassa" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <script type="module" src="assets/menu.js"></script>
+</body>
+</html>

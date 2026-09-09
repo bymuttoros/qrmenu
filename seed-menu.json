@@ -151,6 +151,46 @@
   },
   {
     "category": "Sıcak Kahveler",
+    "name": "Ristretto",
+    "price": 70,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 95
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Demlik Kahve",
+    "price": 80,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 96
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Coffee / Kahve",
+    "price": 80,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 97
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Kahve x2",
+    "price": 110,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 98
+  },
+  {
+    "category": "Sıcak Kahveler",
     "name": "Cappuccino",
     "price": 100,
     "active": true,
@@ -158,6 +198,16 @@
     "description": "",
     "imageUrl": "",
     "sort": 100
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Double Cappuccino",
+    "price": 120,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 105
   },
   {
     "category": "Sıcak Kahveler",
@@ -171,6 +221,16 @@
   },
   {
     "category": "Sıcak Kahveler",
+    "name": "Double Latte Macchiato",
+    "price": 130,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 115
+  },
+  {
+    "category": "Sıcak Kahveler",
     "name": "Flat White",
     "price": 110,
     "active": true,
@@ -178,6 +238,26 @@
     "description": "",
     "imageUrl": "",
     "sort": 120
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Flat White x2",
+    "price": 130,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 125
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Sıcak Krema",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 130
   },
   {
     "category": "Soğuk Kahveler",
