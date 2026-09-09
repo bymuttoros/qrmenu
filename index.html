@@ -165,8 +165,41 @@ main{max-width:920px;margin:auto;padding:14px 12px 105px}
 .location-title{font-weight:900;color:var(--green);font-size:13px}
 .location-address{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
 @media(min-width:600px){.contact-actions{grid-template-columns:1fr 1fr}}
+.cats button.active{
+  background:var(--green);color:#fff;border-color:var(--green);
+  box-shadow:0 7px 18px rgba(11,63,46,.18)
+}
+.pic{cursor:zoom-in}
+.top-btn{
+  position:fixed;right:16px;bottom:86px;z-index:40;
+  width:44px;height:44px;border:none;border-radius:50%;
+  background:var(--gold);color:#fff;font-size:20px;font-weight:900;
+  box-shadow:0 10px 24px rgba(201,145,32,.28);cursor:pointer
+}
+.lightbox{
+  position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);
+  display:flex;align-items:center;justify-content:center;padding:20px
+}
+.lightbox-inner{
+  max-width:92vw;max-height:88vh;position:relative
+}
+.lightbox img{
+  max-width:92vw;max-height:82vh;border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);background:#fff
+}
+.lightbox-close{
+  position:absolute;top:-14px;right:-14px;width:38px;height:38px;
+  border:none;border-radius:50%;background:#fff;color:#222;font-size:20px;
+  font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.25)
+}
 .hidden{display:none!important}
 
+@media(max-width:430px){
+  .card-inner{grid-template-columns:86px 1fr auto;gap:9px;padding:9px}
+  .pic{width:86px;height:86px}
+  .price{font-size:19px}
+  .name{font-size:14px}
+}
 @media(min-width:720px){
   .featured-grid,.grid{grid-template-columns:1fr 1fr}
   .cats{flex-wrap:wrap;overflow:visible}
@@ -259,6 +292,33 @@ const featuredWrap=document.getElementById("featuredWrap");
 const featuredGrid=document.getElementById("featuredGrid");
 const totalBadge=document.getElementById("totalBadge");
 let all=[];
+const topBtn=document.getElementById("topBtn");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightboxImg");
+const lightboxClose=document.getElementById("lightboxClose");
+
+function bindImagePreview(){
+ document.querySelectorAll(".pic").forEach(img=>{
+   img.onclick=()=>{
+     lightboxImg.src=img.dataset.full||img.src;
+     lightbox.classList.remove("hidden");
+     document.body.style.overflow="hidden";
+   };
+ });
+}
+function closeLightbox(){
+ lightbox.classList.add("hidden");
+ lightboxImg.src="";
+ document.body.style.overflow="";
+}
+lightboxClose.onclick=closeLightbox;
+lightbox.onclick=e=>{ if(e.target===lightbox) closeLightbox(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeLightbox(); });
+
+topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+window.addEventListener("scroll",()=>{
+ topBtn.classList.toggle("hidden",window.scrollY<500);
+});
 
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 const slug=s=>String(s||"").toLocaleLowerCase("tr-TR").replaceAll("ı","i").replaceAll("ğ","g").replaceAll("ü","u").replaceAll("ş","s").replaceAll("ö","o").replaceAll("ç","c").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
@@ -281,7 +341,7 @@ const fallback="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org
 
 function card(x,showCat=false){
  return `<article class="card"><div class="card-inner">
-  <img class="pic" src="${x.imageUrl||fallback}" alt="${esc(x.name)}" loading="lazy">
+  <img class="pic" src="${x.imageUrl||fallback}" data-full="${x.imageUrl||fallback}" alt="${esc(x.name)}" loading="lazy">
   <div>
    <div class="name">${esc(x.name)}</div>
    ${x.description?`<div class="desc">${esc(x.description)}</div>`:""}
