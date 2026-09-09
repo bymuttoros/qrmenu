@@ -1,0 +1,54 @@
+CAFE PARK QR MENU V3 - TAMAMEN ÜCRETSİZ FOTOĞRAFLI SÜRÜM
+
+Bu sürüm Firebase Storage KULLANMAZ.
+Fotoğraflar telefonda otomatik küçültülür/sıkıştırılır ve Firestore belgesine kaydedilir.
+
+MÜŞTERİ MENÜSÜ
+https://bymuttoros.github.io/qrmenu/
+
+YÖNETİM PANELİ
+https://bymuttoros.github.io/qrmenu/admin/
+
+GEREKEN FIREBASE SERVİSLERİ
+1. Authentication - Email/Password: Enabled
+2. Firestore Database
+3. Firebase Storage: GEREKMİYOR
+
+FIRESTORE RULES
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /menu/{productId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+  }
+}
+
+GITHUB'A YÜKLEME
+qrmenu repository içindeki eski site dosyalarını bu ZIP içindeki dosyalarla değiştir.
+Klasör yapısını bozma:
+- index.html
+- firebase-config.js
+- seed-menu.json
+- assets/
+- admin/
+
+İLK KURULUM
+Admin adresine gir.
+Firebase Authentication'da oluşturduğun e-posta ve şifreyle giriş yap.
+"Başlangıç Menüsünü Yükle" butonuna SADECE BİR KEZ bas.
+
+KULLANIM
+- Fiyat: Düzenle > fiyat > Kaydet
+- Yeni ürün: + Yeni > bilgileri doldur > Kaydet
+- Silme: Düzenle > Sil
+- Gizleme: Menüde göster tikini kaldır > Kaydet
+- Öne çıkarma: Öne çıkar > Kaydet
+- Fotoğraf: Fotoğraf seç > telefondan galeriden seç > Kaydet
+  Fotoğraf otomatik küçültülür, ek ücret gerektirmez.
+
+NOT
+Firestore'da tek belge sınırı nedeniyle fotoğraflar otomatik olarak küçültülür.
+Menü fotoğrafları için bu yöntem uygundur; çok yüksek çözünürlüklü orijinaller saklanmaz.
