@@ -21,23 +21,13 @@
   },
   {
     "category": "Sıcak İçecekler",
-    "name": "Sıcak Su",
-    "price": 20,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 30
-  },
-  {
-    "category": "Sıcak İçecekler",
     "name": "Sıcak Süt",
     "price": 60,
     "active": true,
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 40
+    "sort": 30
   },
   {
     "category": "Sıcak İçecekler",
@@ -47,7 +37,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 50
+    "sort": 40
   },
   {
     "category": "Sıcak İçecekler",
@@ -57,12 +47,22 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Sıcak İçecekler",
+    "name": "Orelet Nar",
+    "price": 30,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
     "sort": 60
   },
   {
     "category": "Sıcak Kahveler",
     "name": "Türk Kahvesi",
-    "price": 75,
+    "price": 80,
     "active": true,
     "featured": true,
     "description": "",
@@ -72,7 +72,7 @@
   {
     "category": "Sıcak Kahveler",
     "name": "Sütlü Türk Kahvesi",
-    "price": 70,
+    "price": 100,
     "active": true,
     "featured": false,
     "description": "",
@@ -102,7 +102,7 @@
   {
     "category": "Sıcak Kahveler",
     "name": "Nescafe",
-    "price": 50,
+    "price": 30,
     "active": true,
     "featured": false,
     "description": "",
@@ -141,13 +141,33 @@
   },
   {
     "category": "Sıcak Kahveler",
-    "name": "Americano",
-    "price": 90,
+    "name": "Coffee / Kahve",
+    "price": 80,
     "active": true,
     "featured": false,
     "description": "",
     "imageUrl": "",
     "sort": 90
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Kahve X2",
+    "price": 110,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 100
+  },
+  {
+    "category": "Sıcak Kahveler",
+    "name": "Americano-Nescafe",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 110
   },
   {
     "category": "Sıcak Kahveler",
@@ -157,7 +177,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 95
+    "sort": 120
   },
   {
     "category": "Sıcak Kahveler",
@@ -167,27 +187,17 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 96
+    "sort": 130
   },
   {
     "category": "Sıcak Kahveler",
-    "name": "Coffee / Kahve",
+    "name": "Süvari Türk Kahvesi",
     "price": 80,
     "active": true,
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 97
-  },
-  {
-    "category": "Sıcak Kahveler",
-    "name": "Kahve x2",
-    "price": 110,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 98
+    "sort": 140
   },
   {
     "category": "Sıcak Kahveler",
@@ -197,7 +207,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 100
+    "sort": 150
   },
   {
     "category": "Sıcak Kahveler",
@@ -207,7 +217,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 105
+    "sort": 160
   },
   {
     "category": "Sıcak Kahveler",
@@ -217,7 +227,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 110
+    "sort": 170
   },
   {
     "category": "Sıcak Kahveler",
@@ -227,7 +237,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 115
+    "sort": 180
   },
   {
     "category": "Sıcak Kahveler",
@@ -237,27 +247,597 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 120
+    "sort": 190
   },
   {
     "category": "Sıcak Kahveler",
-    "name": "Flat White x2",
+    "name": "Flat White X2",
     "price": 130,
     "active": true,
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 125
+    "sort": 200
   },
   {
-    "category": "Sıcak Kahveler",
-    "name": "Sıcak Krema",
+    "category": "Gazlı İçecek",
+    "name": "Sprite",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Şeftali",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Franbuaz Böğürtlen",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Pepsi 330 ml Kutu",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fanta 330 ml Kutu",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Coca-Cola 330 ml Kutu",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 60
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Karışık Meyve",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 70
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Atom",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 80
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Kayısı",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 90
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Limon Aromalı",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 100
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Karpuz",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 110
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Kavun-Çilek",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 120
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fuse Tea Mango-Ananas",
     "price": 60,
     "active": true,
     "featured": false,
     "description": "",
     "imageUrl": "",
     "sort": 130
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Damla Limon Aromalı",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 140
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Vişne",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 150
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Şeftali",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 160
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Cappy Portakal",
+    "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 170
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fanta 200 ml Cam Şişe",
+    "price": 45,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 180
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Coca-Cola 200 ml Cam Şişe",
+    "price": 45,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 190
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fanta 2.5 Lt",
+    "price": 100,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 200
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Coca-Cola 2.5 Lt",
+    "price": 100,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 210
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Coca-Cola 1 Lt",
+    "price": 70,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 220
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fanta 1 Lt",
+    "price": 70,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 230
+  },
+  {
+    "category": "Gazlı İçecek",
+    "name": "Fruga Gazoz 250 ml",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 240
+  },
+  {
+    "category": "Milkshake",
+    "name": "Karamel Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Milkshake",
+    "name": "Mango Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Milkshake",
+    "name": "Kivi Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Milkshake",
+    "name": "Çilek Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": true,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Milkshake",
+    "name": "Vanilya Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Milkshake",
+    "name": "Çikolata Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 60
+  },
+  {
+    "category": "Milkshake",
+    "name": "Parçacıklı Çikolatalı Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 70
+  },
+  {
+    "category": "Milkshake",
+    "name": "Parçacıklı Çilek Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 80
+  },
+  {
+    "category": "Milkshake",
+    "name": "Böğürtlenli Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 90
+  },
+  {
+    "category": "Milkshake",
+    "name": "Meyve Parçacıklı Muzlu Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 100
+  },
+  {
+    "category": "Milkshake",
+    "name": "Orman Meyveli Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 110
+  },
+  {
+    "category": "Milkshake",
+    "name": "Special Milkshake",
+    "price": 180,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 120
+  },
+  {
+    "category": "Dondurma",
+    "name": "Max Twister Forest Promo",
+    "price": 15,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Dondurma",
+    "name": "Algida Classic CL Vanilya",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Dondurma",
+    "name": "Algida CLS CL",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Dondurma",
+    "name": "Cornetto Keyif CL",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Dondurma",
+    "name": "Algida Maraş",
+    "price": 40,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Dondurma",
+    "name": "Cornetto Classico",
+    "price": 50,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 60
+  },
+  {
+    "category": "Dondurma",
+    "name": "Algida Volcano",
+    "price": 50,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 70
+  },
+  {
+    "category": "Dondurma",
+    "name": "Algida Nogger",
+    "price": 65,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 80
+  },
+  {
+    "category": "Dondurma",
+    "name": "Cornetto Disc Double A",
+    "price": 75,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 90
+  },
+  {
+    "category": "Dondurma",
+    "name": "Cornetto Disc Van",
+    "price": 75,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 100
+  },
+  {
+    "category": "Dondurma",
+    "name": "Magnum",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 110
+  },
+  {
+    "category": "Dondurma",
+    "name": "Magnum Classic",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 120
+  },
+  {
+    "category": "Dondurma",
+    "name": "Magnum Double",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 130
+  },
+  {
+    "category": "Meyve Suyu & Süt",
+    "name": "Tamek Şeftali Meyve Suyu",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Meyve Suyu & Süt",
+    "name": "Cappy Atom 1 Lt",
+    "price": 70,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Meyve Suyu & Süt",
+    "name": "Cappy Şeftali 1 Lt",
+    "price": 70,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Meyve Suyu & Süt",
+    "name": "Sütaş Çikolatalı Süt",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Enerji İçecekleri",
+    "name": "Monster Orjinal",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Enerji İçecekleri",
+    "name": "Monster Mango Loco",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Enerji İçecekleri",
+    "name": "Burn Orjinal Küçük",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Enerji İçecekleri",
+    "name": "Burn Orjinal Büyük",
+    "price": 140,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Soğuk Kahveler",
+    "name": "Ice Coffee",
+    "price": 90,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
   },
   {
     "category": "Soğuk Kahveler",
@@ -267,7 +847,7 @@
     "featured": false,
     "description": "",
     "imageUrl": "",
-    "sort": 10
+    "sort": 20
   },
   {
     "category": "Soğuk Kahveler",
@@ -277,21 +857,11 @@
     "featured": true,
     "description": "",
     "imageUrl": "",
-    "sort": 20
-  },
-  {
-    "category": "Soğuk Kahveler",
-    "name": "Ice Mocha",
-    "price": 100,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
     "sort": 30
   },
   {
     "category": "Soğuk Kahveler",
-    "name": "Ice Caramel Latte",
+    "name": "Ice Mocha",
     "price": 100,
     "active": true,
     "featured": false,
@@ -308,16 +878,6 @@
     "description": "",
     "imageUrl": "",
     "sort": 50
-  },
-  {
-    "category": "Soğuk Kahveler",
-    "name": "Frappe",
-    "price": 100,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 60
   },
   {
     "category": "Bitki Çayları",
@@ -352,7 +912,7 @@
   {
     "category": "Bitki Çayları",
     "name": "Kuşburnu",
-    "price": 60,
+    "price": 30,
     "active": true,
     "featured": false,
     "description": "",
@@ -370,9 +930,59 @@
     "sort": 50
   },
   {
-    "category": "Bitki Çayları",
-    "name": "Papatya",
+    "category": "Limonatalar",
+    "name": "Uludağ Limonata",
     "price": 60,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Limonatalar",
+    "name": "Büyük Ayran",
+    "price": 30,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Limonatalar",
+    "name": "Uludağ Portakal",
+    "price": 40,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Limonatalar",
+    "name": "Limonata Küçük",
+    "price": 15,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Limonatalar",
+    "name": "Limonata Limon",
+    "price": 30,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Limonatalar",
+    "name": "Limonata Vişne",
+    "price": 30,
     "active": true,
     "featured": false,
     "description": "",
@@ -380,18 +990,8 @@
     "sort": 60
   },
   {
-    "category": "Bitki Çayları",
-    "name": "Melisa",
-    "price": 60,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 70
-  },
-  {
-    "category": "Limonatalar",
-    "name": "Limonata • Limon",
+    "category": "Buzlaş Çeşitleri",
+    "name": "Çilek-Karpuz Buzlaş",
     "price": 30,
     "active": true,
     "featured": false,
@@ -400,8 +1000,8 @@
     "sort": 10
   },
   {
-    "category": "Limonatalar",
-    "name": "Limonata • Vişne",
+    "category": "Buzlaş Çeşitleri",
+    "name": "Limon Buzlaş",
     "price": 30,
     "active": true,
     "featured": false,
@@ -410,28 +1010,38 @@
     "sort": 20
   },
   {
+    "category": "Buzlaş Çeşitleri",
+    "name": "Portakal Buzlaş",
+    "price": 30,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
     "category": "Frozen",
-    "name": "Frozen • Çilek & Karpuz",
+    "name": "Çarkıfelek & Orman Meyveli Frozen",
+    "price": 170,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Frozen",
+    "name": "Mango & Ananas Frozen",
     "price": 170,
     "active": true,
     "featured": true,
     "description": "",
     "imageUrl": "",
-    "sort": 10
-  },
-  {
-    "category": "Frozen",
-    "name": "Frozen • Limon",
-    "price": 170,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
     "sort": 20
   },
   {
     "category": "Frozen",
-    "name": "Frozen • Portakal",
+    "name": "Yaban Mersinli Karadutlu Frozen",
     "price": 170,
     "active": true,
     "featured": false,
@@ -441,17 +1051,17 @@
   },
   {
     "category": "Frozen",
-    "name": "Frozen • Mango",
+    "name": "Muzlu Kavunlu Frozen",
     "price": 170,
     "active": true,
-    "featured": true,
+    "featured": false,
     "description": "",
     "imageUrl": "",
     "sort": 40
   },
   {
     "category": "Frozen",
-    "name": "Frozen • Blue Berry / Orman Meyvesi",
+    "name": "Çilek-Karpuz Elmalı Frozen",
     "price": 170,
     "active": true,
     "featured": false,
@@ -460,34 +1070,64 @@
     "sort": 50
   },
   {
-    "category": "Milkshake",
-    "name": "Çilekli Milkshake",
+    "category": "Frozen",
+    "name": "Cafe Park Special Frozen",
     "price": 170,
     "active": true,
-    "featured": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 60
+  },
+  {
+    "category": "Frozen",
+    "name": "Çilek-Karpuz Frozen",
+    "price": 170,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 70
+  },
+  {
+    "category": "Frozen",
+    "name": "Limon Frozen",
+    "price": 170,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 80
+  },
+  {
+    "category": "Frozen",
+    "name": "Portakal Frozen",
+    "price": 170,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 90
+  },
+  {
+    "category": "Özel İçecekler",
+    "name": "Churchill",
+    "price": 90,
+    "active": true,
+    "featured": false,
     "description": "",
     "imageUrl": "",
     "sort": 10
   },
   {
-    "category": "Milkshake",
-    "name": "Çikolatalı Milkshake",
-    "price": 170,
+    "category": "Özel İçecekler",
+    "name": "Cafe Park Kids Special",
+    "price": 180,
     "active": true,
-    "featured": false,
+    "featured": true,
     "description": "",
     "imageUrl": "",
     "sort": 20
-  },
-  {
-    "category": "Milkshake",
-    "name": "Muzlu Milkshake",
-    "price": 170,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 30
   },
   {
     "category": "Özel İçecekler",
@@ -495,13 +1135,13 @@
     "price": 180,
     "active": true,
     "featured": true,
-    "description": "Karadut, passion fruit, limon, çilek ve portakal",
+    "description": "",
     "imageUrl": "",
-    "sort": 10
+    "sort": 30
   },
   {
-    "category": "Soğuk İçecekler",
-    "name": "Sıkma Portakal",
+    "category": "Taze Sıkma",
+    "name": "Sıkma Portakal Suyu",
     "price": 150,
     "active": true,
     "featured": false,
@@ -510,19 +1150,9 @@
     "sort": 10
   },
   {
-    "category": "Soğuk İçecekler",
-    "name": "Buzlaş Çeşitleri",
-    "price": 30,
-    "active": true,
-    "featured": false,
-    "description": "",
-    "imageUrl": "",
-    "sort": 20
-  },
-  {
     "category": "Su & Soda",
-    "name": "Su 0.5 L",
-    "price": 10,
+    "name": "Freşa Elmalı Soda",
+    "price": 25,
     "active": true,
     "featured": false,
     "description": "",
@@ -531,8 +1161,8 @@
   },
   {
     "category": "Su & Soda",
-    "name": "Su 1.5 L",
-    "price": 20,
+    "name": "Freşa Karpuz Çilek Soda",
+    "price": 25,
     "active": true,
     "featured": false,
     "description": "",
@@ -541,8 +1171,118 @@
   },
   {
     "category": "Su & Soda",
+    "name": "Freşa Limonlu Soda",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 30
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Uludağ Frutti Çeşitleri Soda",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 40
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Damla Maden Suyu",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 50
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Uludağ Frutti Karadut Frenk Üzümü",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 60
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Uludağ Frutti Mango Ananas",
+    "price": 25,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 70
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Damla Su 0.5 Lt Cam Şişe",
+    "price": 50,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 80
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Su 0.5 Lt",
+    "price": 10,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 90
+  },
+  {
+    "category": "Su & Soda",
+    "name": "Su 1.5 Lt",
+    "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 100
+  },
+  {
+    "category": "Su & Soda",
     "name": "Sade Soda",
     "price": 20,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 110
+  },
+  {
+    "category": "Atıştırmalıklar",
+    "name": "Kaşarlı Tost",
+    "price": 100,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 10
+  },
+  {
+    "category": "Atıştırmalıklar",
+    "name": "Karışık Tost",
+    "price": 100,
+    "active": true,
+    "featured": false,
+    "description": "",
+    "imageUrl": "",
+    "sort": 20
+  },
+  {
+    "category": "Atıştırmalıklar",
+    "name": "Sucuklu Tost",
+    "price": 100,
     "active": true,
     "featured": false,
     "description": "",
@@ -554,9 +1294,9 @@
     "name": "Popcorn",
     "price": 30,
     "active": true,
-    "featured": false,
+    "featured": true,
     "description": "",
     "imageUrl": "",
-    "sort": 10
+    "sort": 40
   }
 ]
