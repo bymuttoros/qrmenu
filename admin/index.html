@@ -42,12 +42,62 @@
         </div>
         <div class="actions">
           <button id="newBtn" class="btn ghost" type="button">+ Yeni</button>
+          <button id="bulkBtn" class="btn gold" type="button">📥 Toplu Ürün Ekle</button>
           <button id="logout" class="btn danger" type="button">Çıkış</button>
         </div>
       </div>
     </div>
 
     <main class="wrap page">
+
+      <div id="bulkPanel" class="panel bulk-panel hidden">
+        <div class="bulk-head">
+          <div>
+            <h2>Toplu Ürün Ekle</h2>
+            <div class="small">Excel/CSV/TXT dosyası seçin veya tabloyu aşağıya yapıştırın. Sütun sırası: Kategori | Ürün Adı | Fiyat | Sıra</div>
+          </div>
+          <button id="bulkCloseBtn" class="btn ghost" type="button">✕ Kapat</button>
+        </div>
+
+        <div class="row two bulk-grid">
+          <div class="field">
+            <label>Excel / CSV / TXT dosyası</label>
+            <input id="bulkFile" type="file" accept=".xlsx,.xls,.csv,.txt,.tsv">
+            <div class="small">Excel için ilk çalışma sayfası okunur. Başlık satırı varsa otomatik tanınır.</div>
+          </div>
+          <div class="field">
+            <label>Aktarma davranışı</label>
+            <select id="bulkMode">
+              <option value="upsert" selected>Aynı ürün varsa güncelle, yoksa ekle</option>
+              <option value="skip">Aynı ürün varsa atla, sadece yenileri ekle</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tabloyu buraya yapıştır</label>
+          <textarea id="bulkText" class="bulk-text" placeholder="ATIŞTIRMALIKLAR&#9;Kaşarlı Tost&#9;100&#9;1&#10;ATIŞTIRMALIKLAR&#9;Karışık Tost&#9;100&#9;2"></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="bulkPreviewBtn" class="btn ghost" type="button">Önizleme</button>
+          <button id="bulkSaveBtn" class="btn primary" type="button" disabled>Tümünü Kaydet</button>
+          <button id="bulkClearBtn" class="btn ghost" type="button">Temizle</button>
+        </div>
+
+        <div id="bulkStatus" class="status"></div>
+        <div id="bulkSummary" class="bulk-summary hidden"></div>
+
+        <div id="bulkPreviewWrap" class="bulk-preview-wrap hidden">
+          <table class="bulk-table">
+            <thead>
+              <tr><th>#</th><th>Kategori</th><th>Ürün Adı</th><th>Fiyat</th><th>Sıra</th><th>Durum</th></tr>
+            </thead>
+            <tbody id="bulkPreviewBody"></tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="panel">
         <form id="form">
           <div class="row two">
@@ -122,6 +172,7 @@
     </main>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script type="module" src="admin.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy, writeBatch } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { firebaseConfig } from "../firebase-config.js";
 
 const app = initializeApp(firebaseConfig);
@@ -15,6 +15,295 @@ const fallbackImage = `data:image/svg+xml;charset=UTF-8,${fallbackSVG}`;
 
 let items = [];
 let editingId = null;
+
+let bulkRows = [];
+
+function normalizeKey(value){
+  return String(value ?? "")
+    .trim()
+    .toLocaleLowerCase("tr-TR")
+    .replace(/\s+/g, " ");
+}
+
+function normalizeHeader(value){
+  return normalizeKey(value)
+    .replace(/[ıİ]/g, "i")
+    .replace(/[şŞ]/g, "s")
+    .replace(/[ğĞ]/g, "g")
+    .replace(/[üÜ]/g, "u")
+    .replace(/[öÖ]/g, "o")
+    .replace(/[çÇ]/g, "c")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function parsePrice(value){
+  if (typeof value === "number") return value;
+  let s = String(value ?? "").trim().replace(/\s/g, "").replace(/₺/g, "");
+  if (!s) return NaN;
+  if (s.includes(",") && s.includes(".")){
+    if (s.lastIndexOf(",") > s.lastIndexOf(".")) s = s.replace(/\./g, "").replace(",", ".");
+    else s = s.replace(/,/g, "");
+  } else {
+    s = s.replace(",", ".");
+  }
+  return Number(s);
+}
+
+function detectDelimiter(line){
+  const options = ["\t", ";", ","];
+  let best = "\t", count = -1;
+  for (const d of options){
+    const pattern = d === "\t" ? /\t/g : new RegExp("\\" + d, "g");
+    const c = (line.match(pattern) || []).length;
+    if (c > count){ best = d; count = c; }
+  }
+  return best;
+}
+
+function parseDelimitedLine(line, delimiter){
+  const out = [];
+  let cur = "", quoted = false;
+  for (let i=0; i<line.length; i++){
+    const ch = line[i];
+    if (ch === '"'){
+      if (quoted && line[i+1] === '"'){ cur += '"'; i++; }
+      else quoted = !quoted;
+    } else if (ch === delimiter && !quoted){
+      out.push(cur.trim()); cur = "";
+    } else cur += ch;
+  }
+  out.push(cur.trim());
+  return out;
+}
+
+function rowsFromMatrix(matrix){
+  const clean = matrix
+    .map(r => Array.from(r || []).map(v => String(v ?? "").trim()))
+    .filter(r => r.some(Boolean));
+  if (!clean.length) return [];
+
+  const aliases = {
+    category:["kategori","category","kat"],
+    name:["urunadi","urun","name","product","productname","urunismi"],
+    price:["fiyat","price","ucret","tutar"],
+    sort:["sira","sort","order","sirano"]
+  };
+  const first = clean[0].map(normalizeHeader);
+  const idx = {};
+  for (const [key, list] of Object.entries(aliases)){
+    idx[key] = first.findIndex(x => list.includes(x));
+  }
+  const hasHeader = idx.category >= 0 && idx.name >= 0 && idx.price >= 0;
+  const dataRows = hasHeader ? clean.slice(1) : clean;
+  if (!hasHeader){
+    idx.category = 0; idx.name = 1; idx.price = 2; idx.sort = 3;
+  }
+
+  let autoSort = 1;
+  return dataRows.map((r, i) => {
+    const category = String(r[idx.category] ?? "").trim();
+    const name = String(r[idx.name] ?? "").trim();
+    const price = parsePrice(r[idx.price]);
+    const sortRaw = idx.sort >= 0 ? String(r[idx.sort] ?? "").trim() : "";
+    const sort = sortRaw === "" ? autoSort++ : Number(sortRaw);
+    return {
+      rowNo: i + (hasHeader ? 2 : 1),
+      category, name, price,
+      sort: Number.isFinite(sort) ? sort : autoSort++,
+      active: true,
+      featured: false,
+      description: "",
+      imageUrl: ""
+    };
+  });
+}
+
+function parseBulkText(text){
+  const lines = String(text || "").replace(/\r/g, "").split("\n").filter(x => x.trim());
+  if (!lines.length) return [];
+  const delimiter = detectDelimiter(lines[0]);
+  return rowsFromMatrix(lines.map(line => parseDelimitedLine(line, delimiter)));
+}
+
+function existingMap(){
+  const map = new Map();
+  for (const item of items){
+    map.set(`${normalizeKey(item.category)}|||${normalizeKey(item.name)}`, item);
+  }
+  return map;
+}
+
+function validateBulkRows(rows){
+  const existing = existingMap();
+  const seen = new Map();
+  const mode = $("#bulkMode").value;
+  return rows.map((r, i) => {
+    const errors = [];
+    if (!r.category) errors.push("Kategori boş");
+    if (!r.name) errors.push("Ürün adı boş");
+    if (!Number.isFinite(r.price) || r.price < 0) errors.push("Fiyat geçersiz");
+    const key = `${normalizeKey(r.category)}|||${normalizeKey(r.name)}`;
+    const old = existing.get(key);
+    if (seen.has(key)) errors.push(`Listede tekrar (satır ${seen.get(key)})`);
+    else seen.set(key, r.rowNo || i+1);
+    let action = old ? (mode === "skip" ? "Atlanacak" : "Güncellenecek") : "Eklenecek";
+    if (errors.length) action = "Hatalı";
+    return {
+      ...r,
+      key,
+      existingId: old?.id || null,
+      description: old ? (old.description || "") : (r.description || ""),
+      imageUrl: old ? (old.imageUrl || "") : (r.imageUrl || ""),
+      active: old ? (old.active !== false) : (r.active !== false),
+      featured: old ? !!old.featured : !!r.featured,
+      errors,
+      action
+    };
+  });
+}
+
+function renderBulkPreview(){
+  bulkRows = validateBulkRows(bulkRows);
+  const valid = bulkRows.filter(r => !r.errors.length);
+  const errors = bulkRows.length - valid.length;
+  const addCount = valid.filter(r => r.action === "Eklenecek").length;
+  const updCount = valid.filter(r => r.action === "Güncellenecek").length;
+  const skipCount = valid.filter(r => r.action === "Atlanacak").length;
+
+  $("#bulkPreviewBody").innerHTML = bulkRows.slice(0, 300).map((r, i) => `
+    <tr class="${r.errors.length ? "bulk-error-row" : ""}">
+      <td>${i+1}</td>
+      <td>${esc(r.category)}</td>
+      <td>${esc(r.name)}</td>
+      <td>${Number.isFinite(r.price) ? Number(r.price).toLocaleString("tr-TR") + " ₺" : "—"}</td>
+      <td>${esc(r.sort)}</td>
+      <td>${r.errors.length ? esc(r.errors.join(", ")) : esc(r.action)}</td>
+    </tr>
+  `).join("");
+
+  $("#bulkPreviewWrap").classList.toggle("hidden", !bulkRows.length);
+  $("#bulkSummary").classList.toggle("hidden", !bulkRows.length);
+  $("#bulkSummary").innerHTML = `<b>${bulkRows.length} satır</b> • ${addCount} eklenecek • ${updCount} güncellenecek • ${skipCount} atlanacak • ${errors} hatalı`;
+  $("#bulkSaveBtn").disabled = !valid.length || errors > 0;
+  $("#bulkStatus").textContent = errors ? "Hatalı satırları düzeltin; kayıt butonu hatalar giderilene kadar kapalıdır." : "Önizleme hazır ✓";
+}
+
+$("#bulkBtn").onclick = () => {
+  $("#bulkPanel").classList.remove("hidden");
+  $("#bulkPanel").scrollIntoView({behavior:"smooth", block:"start"});
+};
+$("#bulkCloseBtn").onclick = () => $("#bulkPanel").classList.add("hidden");
+$("#bulkClearBtn").onclick = () => {
+  $("#bulkFile").value = "";
+  $("#bulkText").value = "";
+  bulkRows = [];
+  $("#bulkPreviewBody").innerHTML = "";
+  $("#bulkPreviewWrap").classList.add("hidden");
+  $("#bulkSummary").classList.add("hidden");
+  $("#bulkSaveBtn").disabled = true;
+  $("#bulkStatus").textContent = "";
+};
+
+$("#bulkMode").onchange = () => {
+  if (bulkRows.length) renderBulkPreview();
+};
+
+$("#bulkFile").addEventListener("change", async (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+  try{
+    $("#bulkStatus").textContent = "Dosya okunuyor…";
+    const ext = file.name.split(".").pop().toLowerCase();
+    let matrix = [];
+    if (["xlsx","xls"].includes(ext)){
+      if (!window.XLSX) throw new Error("Excel okuyucu yüklenemedi. İnternet bağlantısını kontrol edin veya CSV kullanın.");
+      const buf = await file.arrayBuffer();
+      const wb = XLSX.read(buf, {type:"array"});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      matrix = XLSX.utils.sheet_to_json(ws, {header:1, raw:false, defval:""});
+    } else {
+      const text = await file.text();
+      const lines = text.replace(/\r/g,"").split("\n").filter(x => x.trim());
+      if (lines.length){
+        const delimiter = detectDelimiter(lines[0]);
+        matrix = lines.map(line => parseDelimitedLine(line, delimiter));
+      }
+    }
+    bulkRows = rowsFromMatrix(matrix);
+    renderBulkPreview();
+  }catch(err){
+    $("#bulkStatus").textContent = "Dosya hatası: " + err.message;
+    $("#bulkSaveBtn").disabled = true;
+  }
+});
+
+$("#bulkPreviewBtn").onclick = () => {
+  try{
+    const text = $("#bulkText").value.trim();
+    if (text) bulkRows = parseBulkText(text);
+    else if (!bulkRows.length) throw new Error("Önce dosya seçin veya tabloyu yapıştırın.");
+    renderBulkPreview();
+  }catch(err){
+    $("#bulkStatus").textContent = "Önizleme hatası: " + err.message;
+  }
+};
+
+$("#bulkSaveBtn").onclick = async () => {
+  bulkRows = validateBulkRows(bulkRows);
+  const errors = bulkRows.filter(r => r.errors.length);
+  if (errors.length){
+    renderBulkPreview();
+    return;
+  }
+
+  const actionable = bulkRows.filter(r => r.action !== "Atlanacak");
+  if (!actionable.length){
+    $("#bulkStatus").textContent = "Kaydedilecek yeni veya güncellenecek ürün yok.";
+    return;
+  }
+  if (!confirm(`${actionable.length} ürün Firestore'a kaydedilecek. Devam edilsin mi?`)) return;
+
+  $("#bulkSaveBtn").disabled = true;
+  try{
+    let done = 0;
+    for (let start = 0; start < actionable.length; start += 400){
+      const chunk = actionable.slice(start, start + 400);
+      const batch = writeBatch(db);
+      for (const row of chunk){
+        const data = {
+          name: row.name,
+          category: row.category,
+          price: Number(row.price),
+          sort: Number(row.sort || 0),
+          description: row.description || "",
+          active: row.active !== false,
+          featured: !!row.featured,
+          imageUrl: row.imageUrl || ""
+        };
+        if (row.existingId){
+          batch.update(doc(db, "menu", row.existingId), data);
+        } else {
+          batch.set(doc(collection(db, "menu")), data);
+        }
+      }
+      await batch.commit();
+      done += chunk.length;
+      $("#bulkStatus").textContent = `${done}/${actionable.length} ürün kaydedildi…`;
+    }
+    $("#bulkStatus").textContent = `${actionable.length} ürün başarıyla kaydedildi ✓`;
+    $("#bulkText").value = "";
+    $("#bulkFile").value = "";
+    bulkRows = [];
+    $("#bulkSaveBtn").disabled = true;
+    $("#bulkPreviewWrap").classList.add("hidden");
+    $("#bulkSummary").classList.add("hidden");
+  }catch(err){
+    $("#bulkStatus").textContent = "Toplu kayıt hatası: " + err.message;
+    $("#bulkSaveBtn").disabled = false;
+  }
+};
+
+
 
 $("#loginForm").onsubmit = async (e) => {
   e.preventDefault();
