@@ -67,22 +67,3 @@ body{
 .item-title{font-weight:900}
 .item-meta{font-size:12px;color:var(--muted);margin-top:4px}
 .status{margin-top:10px;font-size:13px;color:var(--green)}
-
-
-/* Toplu ürün ekleme */
-.bulk-panel{margin-bottom:16px;border:2px solid rgba(198,138,25,.28)}
-.bulk-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}
-.bulk-head h2{margin:0 0 4px;color:var(--green);font-size:20px}
-.bulk-grid{align-items:end}
-.bulk-text{min-height:150px!important;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
-.bulk-summary{margin-top:12px;padding:11px 13px;border-radius:14px;background:#f4f8f5;border:1px solid #dbe8df;color:var(--green);font-size:13px}
-.bulk-preview-wrap{margin-top:12px;overflow:auto;border:1px solid var(--line);border-radius:16px;max-height:440px}
-.bulk-table{width:100%;border-collapse:collapse;background:#fff;font-size:13px;min-width:760px}
-.bulk-table th,.bulk-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.bulk-table th{position:sticky;top:0;background:#f8f4eb;color:var(--green);z-index:1}
-.bulk-error-row{background:#fff2f0}
-.btn:disabled{opacity:.5;cursor:not-allowed}
-@media(max-width:640px){
-  .bulk-head{flex-direction:column}
-  .bulk-head .btn{align-self:flex-end}
-}
