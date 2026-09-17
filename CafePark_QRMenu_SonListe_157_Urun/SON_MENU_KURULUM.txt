@@ -1,0 +1,9 @@
+CAFE PARK SON MENÜ GÜNCELLEME
+
+1) Bu paketteki admin/CafePark_Son_Menu_Guncelle.html dosyasını GitHub'daki admin klasörüne yükleyin ve mevcut dosyanın üzerine yazın.
+2) GitHub Pages güncellendikten sonra tarayıcıda: /qrmenu/admin/CafePark_Son_Menu_Guncelle.html adresini açın.
+3) Admin hesabınızla giriş yapın.
+4) “SON MENÜYÜ UYGULA” butonuna basın.
+5) İşlem bittiğinde QR menüyü yenileyin.
+
+Hedef: 157 benzersiz ürün. Aynı ürünün listede tekrar eden satırları tek kayıt olarak tutulur. Mevcut eşleşen ürün görselleri ve açıklamaları korunur.

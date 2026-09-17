@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cafe Park Kahvaltı Ekle</title>
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#f7f2e8;
+  margin:0;
+  padding:20px;
+  color:#173026
+}
+.box{
+  max-width:560px;
+  margin:30px auto;
+  background:#fff;
+  border:1px solid #e5d8bf;
+  border-radius:20px;
+  padding:20px
+}
+h2{
+  color:#0b3f2e
+}
+input{
+  width:100%;
+  padding:12px;
+  margin:6px 0 12px;
+  box-sizing:border-box;
+  border:1px solid #ddd;
+  border-radius:10px
+}
+button{
+  padding:12px 16px;
+  border:0;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer
+}
+.primary{
+  background:#0b3f2e;
+  color:#fff
+}
+.add{
+  background:#c99120;
+  color:#fff
+}
+.hidden{
+  display:none
+}
+#status,
+#loginStatus{
+  margin-top:12px;
+  white-space:pre-wrap
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="loginBox">
+  <h2>Cafe Park Kahvaltı Ekle</h2>
+  <p>Mevcut ürünler silinmez. Sadece 6 kahvaltı ürünü eklenir.</p>
+
+  <input id="email" type="email" placeholder="E-posta">
+  <input id="password" type="password" placeholder="Şifre">
+
+  <button id="loginBtn" class="primary">Giriş Yap</button>
+
+  <div id="loginStatus"></div>
+</div>
+
+<div class="box hidden" id="panel">
+  <h2>Kahvaltı Kategorisi</h2>
+
+  <p>Şu ürünler eklenecek:</p>
+
+  <ul>
+    <li>Kahvaltı Tabağı 1 Kişilik — 260 TL</li>
+    <li>Peynirli Sigara Böreği Porsiyon — 40 TL</li>
+    <li>Sahanda Tereyağlı Yumurta — 90 TL</li>
+    <li>Gözleme Porsiyon — 180 TL</li>
+    <li>Menemen Porsiyon — 150 TL</li>
+    <li>Haşlanmış Yumurta — 50 TL</li>
+  </ul>
+
+  <button id="addBtn" class="add">KAHVALTI ÜRÜNLERİNİ EKLE</button>
+
+  <div id="status"></div>
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCtjOlgnGjLbpW51Ttioo4gxMWSVZw16VM",
+  authDomain: "cafepark-d1ebf.firebaseapp.com",
+  projectId: "cafepark-d1ebf",
+  messagingSenderId: "649792859092",
+  appId: "1:649792859092:web:44b82ddc55d042a7134441"
+};
+
+
+const kahvaltiUrunleri = [
+
+  {
+    category:"Kahvaltı",
+    name:"Kahvaltı Tabağı 1 Kişilik",
+    price:260,
+    active:true,
+    featured:true,
+    description:"",
+    imageUrl:"",
+    sort:10
+  },
+
+  {
+    category:"Kahvaltı",
+    name:"Peynirli Sigara Böreği Porsiyon",
+    price:40,
+    active:true,
+    featured:false,
+    description:"",
+    imageUrl:"",
+    sort:20
+  },
+
+  {
+    category:"Kahvaltı",
+    name:"Sahanda Tereyağlı Yumurta",
+    price:90,
+    active:true,
+    featured:false,
+    description:"",
+    imageUrl:"",
+    sort:30
+  },
+
+  {
+    category:"Kahvaltı",
+    name:"Gözleme Porsiyon",
+    price:180,
+    active:true,
+    featured:false,
+    description:"",
+    imageUrl:"",
+    sort:40
+  },
+
+  {
+    category:"Kahvaltı",
+    name:"Menemen Porsiyon",
+    price:150,
+    active:true,
+    featured:false,
+    description:"",
+    imageUrl:"",
+    sort:50
+  },
+
+  {
+    category:"Kahvaltı",
+    name:"Haşlanmış Yumurta",
+    price:50,
+    active:true,
+    featured:false,
+    description:"",
+    imageUrl:"",
+    sort:60
+  }
+
+];
+
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const loginBox = document.getElementById("loginBox");
+const panel = document.getElementById("panel");
+const loginBtn = document.getElementById("loginBtn");
+const addBtn = document.getElementById("addBtn");
+const loginStatus = document.getElementById("loginStatus");
+const status = document.getElementById("status");
+
+
+loginBtn.onclick = async () => {
+
+  loginStatus.textContent = "Giriş yapılıyor...";
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      document.getElementById("email").value,
+      document.getElementById("password").value
+    );
+
+    loginStatus.textContent = "";
+
+  } catch(e) {
+
+    loginStatus.textContent = "Giriş başarısız: " + e.message;
+
+  }
+
+};
+
+
+onAuthStateChanged(auth,user=>{
+
+  loginBox.classList.toggle("hidden",!!user);
+
+  panel.classList.toggle("hidden",!user);
+
+});
+
+
+addBtn.onclick = async () => {
+
+  addBtn.disabled = true;
+
+  let eklenen = 0;
+  let atlanan = 0;
+
+  try {
+
+    for(const urun of kahvaltiUrunleri){
+
+      status.textContent =
+        "Kontrol ediliyor: " + urun.name;
+
+      const q = query(
+        collection(db,"menu"),
+        where("name","==",urun.name)
+      );
+
+      const snap = await getDocs(q);
+
+      if(snap.empty){
+
+        await addDoc(
+          collection(db,"menu"),
+          urun
+        );
+
+        eklenen++;
+
+      }else{
+
+        atlanan++;
+
+      }
+
+      status.textContent =
+        "Eklenen: " + eklenen +
+        " | Zaten mevcut: " + atlanan;
+
+    }
+
+    status.textContent =
+      "✅ Tamamlandı.\n" +
+      eklenen + " ürün eklendi.\n" +
+      atlanan + " ürün zaten vardı.";
+
+  } catch(e) {
+
+    status.textContent =
+      "❌ Hata: " + e.message;
+
+    addBtn.disabled = false;
+
+  }
+
+};
+
+</script>
+
+</body>
+</html>
