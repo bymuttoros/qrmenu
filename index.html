@@ -4,38 +4,448 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b3f2e">
-<title>Cafe Park Hassa | QR Menü</title>
+<title>Cafe Park Hassa | Premium Menü</title>
 <style>
-:root{--green:#0b3f2e;--green2:#155a43;--gold:#c99120;--gold2:#e4b95d;--cream:#fbf7ee;--cream2:#f3ead8;--card:#fff;--text:#173026;--muted:#758078;--line:#e7dcc5;--shadow:0 14px 36px rgba(11,63,46,.10)}
-*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fbf7ee,#f7f1e6);color:var(--text)}
-.hero{padding:16px 12px 12px} .hero-card{max-width:920px;margin:auto;background:linear-gradient(135deg,#fff,#fffaf1);border:1px solid rgba(201,145,32,.24);border-radius:26px;box-shadow:var(--shadow);overflow:hidden;position:relative}
-.hero-card:before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold))}
-.hero-inner{display:flex;align-items:center;gap:14px;padding:18px} .logo{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;border:3px solid #ead39b;font-weight:1000;font-size:23px;box-shadow:0 8px 24px rgba(11,63,46,.18)}
-.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}.brand h1{margin:0;color:var(--green);font-size:30px;line-height:1} .slogan{margin-top:6px;color:var(--gold);font-weight:900;font-size:12px;letter-spacing:.7px} .place{margin-top:5px;color:var(--muted);font-size:12px}
-.hero-badges{display:flex;gap:7px;flex-wrap:wrap;padding:0 18px 18px} .hero-badges span{background:#f8f3e8;border:1px solid #e8dac0;color:var(--green);border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900}
-.sticky{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(251,247,238,.92);border-bottom:1px solid rgba(201,145,32,.14)} .sticky-inner{max-width:920px;margin:auto;padding:10px 12px} .search-wrap{position:relative}
-.search{width:100%;padding:13px 15px 13px 43px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:15px;outline:none;box-shadow:0 6px 20px rgba(11,63,46,.05)} .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
-.cats{display:flex;gap:8px;overflow:auto;padding-top:9px;scrollbar-width:none} .cats::-webkit-scrollbar{display:none} .cats button{border:1px solid #dfd2b7;background:#fff;color:var(--green);border-radius:999px;padding:9px 13px;font-weight:900;font-size:12px;white-space:nowrap;cursor:pointer} .cats button.active{background:var(--green);color:#fff;border-color:var(--green)}
-main{max-width:920px;margin:auto;padding:14px 12px 105px} .notice{display:flex;justify-content:space-between;align-items:center;gap:10px;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff;border-radius:18px;padding:12px 14px;margin-bottom:14px;box-shadow:0 10px 24px rgba(11,63,46,.18)} .notice b{font-size:13px} .notice span{font-size:11px;opacity:.9}
-.location-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:0 8px 20px rgba(11,63,46,.05)} .location-title{font-weight:900;color:var(--green);font-size:13px} .location-address{font-size:12px;color:var(--muted);margin-top:4px}
-.contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:9px 0 17px} .contact-btn{display:flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid var(--line);border-radius:15px;padding:11px 10px;font-weight:900;font-size:12px;cursor:pointer} .maps{background:#fff;color:var(--green)} .instagram{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff;border:none}
-.section{scroll-margin-top:134px;margin-top:22px} .section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 3px 9px} .section-head h2{margin:0;color:var(--green);font-size:19px;line-height:1.2} .section-head small{color:var(--muted);font-size:11px;white-space:nowrap}
-.menu-list{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(11,63,46,.06)} .menu-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:13px 15px;border-bottom:1px dashed #e7dcc5} .menu-row:last-child{border-bottom:none} .product-name{font-size:14.5px;font-weight:800;line-height:1.28} .price{font-size:16px;font-weight:1000;color:var(--gold);white-space:nowrap}
-.empty{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;text-align:center;color:var(--muted)} .footer{position:fixed;left:0;right:0;bottom:0;z-index:35;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(to top,rgba(251,247,238,1) 72%,rgba(251,247,238,0))} .footer-box{max-width:920px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 12px 30px rgba(11,63,46,.12)} .footer-brand b{color:var(--green);font-size:13px} .footer-brand span{display:block;color:var(--muted);font-size:10px;margin-top:2px} .footer-link{text-decoration:none;background:var(--green);color:#fff;border-radius:999px;padding:9px 11px;font-size:11px;font-weight:900}
-@media(min-width:720px){.menu-row{padding:14px 18px}.product-name{font-size:15px}.price{font-size:17px}} @media(max-width:430px){.contact-actions{grid-template-columns:1fr}.logo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}.brand h1{font-size:27px}.logo{width:66px;height:66px;font-size:21px}}
+:root{
+  --green:#0b3f2e;
+  --green2:#155a43;
+  --gold:#c99120;
+  --gold2:#e4b95d;
+  --cream:#fbf7ee;
+  --cream2:#f3ead8;
+  --card:#fff;
+  --text:#173026;
+  --muted:#758078;
+  --line:#e7dcc5;
+  --shadow:0 14px 36px rgba(11,63,46,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, #fffaf0 0, transparent 26%),
+    linear-gradient(180deg,#fbf7ee 0,#f7f1e6 100%);
+  color:var(--text);
+}
+.hero{padding:12px 14px 10px}
+.hero-card{
+  max-width:920px;margin:auto;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,252,244,.90));
+  border:1px solid rgba(201,145,32,.22);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+.hero-card:before{
+  content:"";
+  position:absolute;inset:0 auto auto 0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+}
+.hero-inner{display:flex;align-items:center;gap:14px;padding:14px 16px 10px}
+.logo{
+  width:76px;height:76px;border-radius:50%;object-fit:cover;
+  background:#fff;border:2px solid rgba(201,145,32,.35);
+  box-shadow:0 8px 24px rgba(201,145,32,.12);flex:none
+}
+.brand h1{margin:0;color:var(--green);font-size:28px;line-height:1}
+.brand .slogan{margin-top:6px;color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.3px}
+.brand .place{margin-top:5px;color:var(--muted);font-size:12px}
+.hero-badges{display:flex;gap:7px;flex-wrap:wrap;padding:0 16px 14px}
+.hero-badges span{
+  background:#f8f3e8;border:1px solid #e8dac0;color:var(--green);
+  border-radius:999px;padding:7px 10px;font-size:11px;font-weight:800
+}
+
+.sticky{
+  position:sticky;top:0;z-index:30;
+  backdrop-filter:blur(14px);
+  background:rgba(251,247,238,.90);
+  border-bottom:1px solid rgba(201,145,32,.13)
+}
+.sticky-inner{max-width:920px;margin:auto;padding:10px 12px}
+.search-wrap{position:relative}
+.search{
+  width:100%;padding:14px 16px 14px 44px;border:1px solid var(--line);
+  border-radius:17px;background:#fff;font-size:15px;outline:none;
+  box-shadow:0 6px 20px rgba(11,63,46,.06)
+}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-top:9px;scrollbar-width:none;flex-wrap:nowrap}
+.cats::-webkit-scrollbar{display:none}
+.cats button{
+  border:1px solid #dfd2b7;background:#fff;color:var(--green);
+  border-radius:999px;padding:9px 13px;font-weight:800;font-size:12px;white-space:nowrap;
+  box-shadow:0 5px 15px rgba(11,63,46,.04)
+}
+.cats button:hover{background:#f7f1e6}
+
+main{max-width:920px;margin:auto;padding:14px 12px 105px}
+.notice{
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
+  background:linear-gradient(135deg,#0b3f2e,#155a43);
+  color:#fff;border-radius:18px;padding:12px 14px;margin-bottom:14px;
+  box-shadow:0 10px 24px rgba(11,63,46,.18)
+}
+.notice b{font-size:13px} .notice span{font-size:11px;opacity:.9}
+
+.featured-wrap{margin:4px 0 22px}
+.section-title{
+  display:flex;justify-content:space-between;align-items:end;gap:10px;
+  margin:18px 3px 10px
+}
+.section-title h2{margin:0;color:var(--green);font-size:20px}
+.section-title small{color:var(--muted)}
+.featured-grid,.grid{display:grid;grid-template-columns:1fr;gap:11px}
+
+.card{
+  background:rgba(255,255,255,.98);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 22px rgba(11,63,46,.06);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(11,63,46,.10)}
+.card-inner{display:grid;grid-template-columns:104px 1fr auto;gap:11px;align-items:center;padding:11px}
+.pic{width:104px;height:104px;border-radius:15px;object-fit:cover;background:var(--cream2)}
+.name{font-size:15px;font-weight:900;line-height:1.25}
+.desc{font-size:12px;color:var(--muted);line-height:1.4;margin-top:5px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.badge{
+  display:inline-flex;align-items:center;
+  border-radius:999px;padding:5px 7px;font-size:9px;font-weight:900
+}
+.badge.featured{background:#fff0c8;color:#845900}
+.badge.cat{background:#edf7f1;color:var(--green2)}
+.price{font-weight:900;color:var(--gold);font-size:22px;white-space:nowrap}
+.section{scroll-margin-top:135px;margin-top:24px;padding-top:4px;border-top:1px solid rgba(201,145,32,.10)}
+
+.loading,.empty,.error{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:26px;text-align:center;color:var(--muted)
+}
+
+.footer{
+  position:fixed;left:0;right:0;bottom:0;z-index:35;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top,rgba(251,247,238,1) 70%,rgba(251,247,238,0))
+}
+.footer-box{
+  max-width:920px;margin:auto;background:#fff;border:1px solid var(--line);
+  border-radius:18px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 12px 30px rgba(11,63,46,.12)
+}
+.footer-brand b{color:var(--green);font-size:13px}
+.footer-brand span{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.instagram{
+  text-decoration:none;background:var(--green);color:#fff;border-radius:999px;
+  padding:9px 11px;font-size:11px;font-weight:900
+}
+.contact-actions{
+  max-width:920px;margin:0 auto 16px;
+  display:grid;grid-template-columns:1fr;gap:9px;
+}
+.contact-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  text-decoration:none;border:none;cursor:pointer;
+  border-radius:16px;padding:12px 14px;font-weight:900;font-size:13px;
+  box-shadow:0 8px 20px rgba(11,63,46,.08)
+}
+.contact-btn.maps{background:#fff;color:var(--green);border:1px solid var(--line)}
+.contact-btn.share{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#fff}
+.location-card{
+  max-width:920px;margin:0 auto 18px;
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 14px;
+  box-shadow:0 8px 20px rgba(11,63,46,.05)
+}
+.location-title{font-weight:900;color:var(--green);font-size:13px}
+.location-address{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.4}
+@media(min-width:600px){.contact-actions{grid-template-columns:1fr 1fr}}
+.cats button.active{
+  background:var(--green);color:#fff;border-color:var(--green);
+  box-shadow:0 7px 18px rgba(11,63,46,.18)
+}
+.pic{cursor:zoom-in}
+.top-btn{
+  position:fixed;right:16px;bottom:86px;z-index:40;
+  width:44px;height:44px;border:none;border-radius:50%;
+  background:var(--gold);color:#fff;font-size:20px;font-weight:900;
+  box-shadow:0 10px 24px rgba(201,145,32,.28);cursor:pointer
+}
+.lightbox{
+  position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.78);
+  display:flex;align-items:center;justify-content:center;padding:20px
+}
+.lightbox-inner{
+  max-width:92vw;max-height:88vh;position:relative
+}
+.lightbox img{
+  max-width:92vw;max-height:82vh;border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);background:#fff
+}
+.lightbox-close{
+  position:absolute;top:-14px;right:-14px;width:38px;height:38px;
+  border:none;border-radius:50%;background:#fff;color:#222;font-size:20px;
+  font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.25)
+}
+.hidden{display:none!important}
+
+@media(max-width:430px){
+  .card-inner{grid-template-columns:86px 1fr auto;gap:9px;padding:9px}
+  .pic{width:86px;height:86px}
+  .price{font-size:19px}
+  .name{font-size:14px}
+}
+@media(min-width:720px){
+  .featured-grid,.grid{grid-template-columns:1fr 1fr}
+  .cats{flex-wrap:wrap;overflow:visible}
+  .hero-inner{padding:16px 18px 10px}
+  .hero-badges{padding:0 18px 14px}
+}
 </style>
 </head>
 <body>
-<header class="hero"><div class="hero-card"><div class="hero-inner"><div class="logo"><img src="assets/logo.png" alt="Cafe Park Logo"></div><div class="brand"><h1>Cafe Park</h1><div class="slogan">KAHVE • LEZZET • HUZUR</div><div class="place">15 Kasım Gürhan Ergüneş Parkı • Hassa</div></div></div><div class="hero-badges"><span>QR Menü</span><span>Güncel Fiyatlar</span><span id="totalBadge">146 ürün</span></div></div></header>
-<div class="sticky"><div class="sticky-inner"><div class="search-wrap"><span class="search-icon">⌕</span><input id="search" class="search" type="search" placeholder="Menüde ara… örn. latte, frozen, çay"></div><div id="cats" class="cats"></div></div></div>
-<main><div class="notice"><div><b>Cafe Park QR Menü</b><br><span>Ürünler kategori kategori, fiyatlar sağda listelenir.</span></div><div>☕</div></div><div class="location-card"><div class="location-title">📍 Cafe Park Hassa</div><div class="location-address">Girne, Dervişpaşa Blv., 31700 Hassa/Hatay</div></div><div class="contact-actions"><a class="contact-btn maps" href="https://www.google.com/maps/search/?api=1&query=Park%20Cafe%20Hassa&query_place_id=ChIJ4yZhnK0JLxURwENGmf-IShE" target="_blank" rel="noopener">📍 Google Haritalar'da Aç</a><a class="contact-btn instagram" href="https://www.instagram.com/cafeparkhassa/" target="_blank" rel="noopener">Instagram</a></div><div id="menu"></div></main>
-<div class="footer"><div class="footer-box"><div class="footer-brand"><b>Cafe Park Hassa</b><span>@cafeparkhassa</span></div><a class="footer-link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ Başa Dön</a></div></div>
-<script>
-const MENU_DATA=[{"category":"ATIŞTIRMALIKLAR","name":"Kaşarlı Tost","price":100,"sort":1},{"category":"ATIŞTIRMALIKLAR","name":"Karışık Tost","price":100,"sort":2},{"category":"ATIŞTIRMALIKLAR","name":"Sucuklu Tost","price":100,"sort":3},{"category":"ATIŞTIRMALIKLAR","name":"Popcorn","price":30,"sort":4},{"category":"TAZE SIKMA","name":"Sıkma Portakal Suyu","price":150,"sort":5},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Çilek - Karpuz Buzlaş","price":30,"sort":6},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Limon Buzlaş","price":30,"sort":7},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Karışık Buzlaş","price":30,"sort":8},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Portakal Buzlaş","price":30,"sort":9},{"category":"LİMONATALAR","name":"Limonata - Limon","price":30,"sort":10},{"category":"LİMONATALAR","name":"Mohito","price":130,"sort":11},{"category":"LİMONATALAR","name":"Limonata - Vişne","price":30,"sort":12},{"category":"SICAK KAHVELER","name":"Double Türk Kahvesi","price":120,"sort":13},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Az Şekerli","price":80,"sort":14},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Sade","price":80,"sort":14},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Orta","price":80,"sort":15},{"category":"SICAK İÇECEKLER","name":"Çay","price":10,"sort":16},{"category":"SU & SODA","name":"Sade Soda","price":20,"sort":17},{"category":"SU & SODA","name":"Su 0.5 Lt","price":10,"sort":18},{"category":"SICAK İÇECEKLER","name":"Fincan Çay","price":30,"sort":19},{"category":"SICAK İÇECEKLER","name":"Sıcak Süt","price":60,"sort":20},{"category":"SICAK İÇECEKLER","name":"Sıcak Çikolata","price":70,"sort":21},{"category":"SICAK İÇECEKLER","name":"Salep","price":50,"sort":22},{"category":"SICAK İÇECEKLER","name":"Orelet Nar","price":30,"sort":23},{"category":"SICAK İÇECEKLER","name":"Orelet Kivi","price":30,"sort":24},{"category":"SICAK İÇECEKLER","name":"Orelet Limon","price":30,"sort":25},{"category":"SICAK İÇECEKLER","name":"Orelet Kuşburnu","price":30,"sort":26},{"category":"SICAK İÇECEKLER","name":"Orelet Nane Limon","price":30,"sort":27},{"category":"SICAK İÇECEKLER","name":"Orelet Elma Aromalı Karışık","price":30,"sort":28},{"category":"SICAK KAHVELER","name":"Sütlü Türk Kahvesi","price":100,"sort":29},{"category":"SICAK KAHVELER","name":"Osmanlı Dibek Kahvesi","price":60,"sort":30},{"category":"SICAK KAHVELER","name":"Menengiç Damla Sakızlı Kahvesi","price":60,"sort":31},{"category":"SICAK KAHVELER","name":"Nescafe","price":30,"sort":32},{"category":"SICAK KAHVELER","name":"Sütlü Nescafe Bardak","price":30,"sort":33},{"category":"SICAK KAHVELER","name":"Espresso","price":70,"sort":34},{"category":"SICAK KAHVELER","name":"Double Espresso","price":90,"sort":35},{"category":"SICAK KAHVELER","name":"Coffee / Kahve","price":80,"sort":36},{"category":"SICAK KAHVELER","name":"Kahve X2","price":110,"sort":37},{"category":"SICAK KAHVELER","name":"Americano-Nescafe","price":90,"sort":38},{"category":"SICAK KAHVELER","name":"Ristretto","price":70,"sort":39},{"category":"SICAK KAHVELER","name":"Demlik Kahve","price":80,"sort":40},{"category":"SICAK KAHVELER","name":"Cappuccino","price":100,"sort":41},{"category":"SICAK KAHVELER","name":"Süvari Türk Kahvesi","price":80,"sort":42},{"category":"SICAK KAHVELER","name":"Double Cappuccino","price":120,"sort":43},{"category":"SICAK KAHVELER","name":"Latte Macchiato","price":110,"sort":44},{"category":"SICAK KAHVELER","name":"Double Latte Macchiato","price":130,"sort":45},{"category":"SICAK KAHVELER","name":"Flat White","price":110,"sort":46},{"category":"SICAK KAHVELER","name":"Flat White X2","price":130,"sort":47},{"category":"GAZLI İÇECEK","name":"Sprite","price":70,"sort":48},{"category":"GAZLI İÇECEK","name":"Pepsi Kutu 330 ml","price":70,"sort":49},{"category":"GAZLI İÇECEK","name":"Fanta 330 ml Kutu Kola","price":70,"sort":50},{"category":"GAZLI İÇECEK","name":"Coca-Cola 330 ml Kutu Kola","price":70,"sort":51},{"category":"GAZLI İÇECEK","name":"Fanta 200 ml Cam Şişe Kola","price":45,"sort":52},{"category":"GAZLI İÇECEK","name":"Coca-Cola 200 ml Cam Şişe Kola","price":45,"sort":53},{"category":"GAZLI İÇECEK","name":"Fanta 2.5 Lt","price":100,"sort":54},{"category":"GAZLI İÇECEK","name":"Coca-Cola 2.5 Lt","price":100,"sort":55},{"category":"GAZLI İÇECEK","name":"Coca-Cola 1 Lt","price":70,"sort":56},{"category":"GAZLI İÇECEK","name":"Fanta 1 Lt","price":80,"sort":57},{"category":"GAZLI İÇECEK","name":"Fruga Gazoz 250 ml","price":30,"sort":58},{"category":"GAZLI İÇECEK","name":"Pepsi 450 ml","price":35,"sort":59},{"category":"GAZLI İÇECEK","name":"Pepsi 1 L","price":80,"sort":60},{"category":"GAZLI İÇECEK","name":"Pepsi 1,5 L","price":90,"sort":61},{"category":"GAZLI İÇECEK","name":"Pepsi 2,5 L","price":110,"sort":62},{"category":"GAZLI İÇECEK","name":"Yedigün Portakallı Gazoz 330 ml","price":70,"sort":63},{"category":"GAZLI İÇECEK","name":"Yedigün Portakallı Gazoz 1 L","price":85,"sort":64},{"category":"MILKSHAKE","name":"Karamel Milkshake","price":180,"sort":65},{"category":"MILKSHAKE","name":"Mango Milkshake","price":180,"sort":66},{"category":"MILKSHAKE","name":"Kivi Milkshake","price":180,"sort":67},{"category":"MILKSHAKE","name":"Çilek Milkshake","price":180,"sort":68},{"category":"MILKSHAKE","name":"Vanilya Milkshake","price":180,"sort":69},{"category":"MILKSHAKE","name":"Çikolata Milkshake","price":180,"sort":70},{"category":"MILKSHAKE","name":"Çikolata Parçacıklı Milkshake","price":180,"sort":71},{"category":"MILKSHAKE","name":"Çilek Parçacıklı Milkshake","price":180,"sort":72},{"category":"MILKSHAKE","name":"Mevye Parçacıklı Milkshake","price":180,"sort":74},{"category":"MILKSHAKE","name":"Orman Meyveli Milkshake","price":180,"sort":75},{"category":"DONDURMA","name":"Max Twister Forest Promo","price":15,"sort":76},{"category":"DONDURMA","name":"Algida Classic CL Vanilya","price":20,"sort":77},{"category":"DONDURMA","name":"Algida CLS CL","price":20,"sort":78},{"category":"DONDURMA","name":"Cornetto Keyif CL","price":25,"sort":79},{"category":"DONDURMA","name":"Algida Maraş","price":40,"sort":80},{"category":"DONDURMA","name":"Cornetto Classico","price":50,"sort":81},{"category":"DONDURMA","name":"Algida Volcano","price":50,"sort":82},{"category":"DONDURMA","name":"Algida Nogger","price":65,"sort":83},{"category":"DONDURMA","name":"Cornetto Disc Double A","price":75,"sort":84},{"category":"DONDURMA","name":"Cornetto Disc Van","price":75,"sort":85},{"category":"DONDURMA","name":"Magnum","price":90,"sort":86},{"category":"DONDURMA","name":"Magnum Classic","price":90,"sort":87},{"category":"DONDURMA","name":"Magnum Double","price":90,"sort":88},{"category":"MEYVE SUYU & SÜT","name":"Tamek Şeftali Meyve Suyu","price":20,"sort":89},{"category":"MEYVE SUYU & SÜT","name":"Cappy Atom 1 Lt","price":80,"sort":90},{"category":"MEYVE SUYU & SÜT","name":"Cappy Şeftali 1 Lt","price":70,"sort":91},{"category":"MEYVE SUYU & SÜT","name":"Meysu Şeftali 200 ml","price":20,"sort":92},{"category":"MEYVE SUYU & SÜT","name":"Sütaş Çikolatalı Süt","price":20,"sort":93},{"category":"MEYVE SUYU & SÜT","name":"Cappy Karışık Meyve","price":70,"sort":94},{"category":"MEYVE SUYU & SÜT","name":"Cappy Atom","price":70,"sort":95},{"category":"MEYVE SUYU & SÜT","name":"Cappy Kayısı","price":70,"sort":96},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Şeftali 330 ml","price":70,"sort":97},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Karışık Meyve 330 ml","price":70,"sort":98},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Vişne 330 ml","price":70,"sort":99},{"category":"MEYVE SUYU & SÜT","name":"Cappy Vişne","price":70,"sort":100},{"category":"MEYVE SUYU & SÜT","name":"Cappy Şeftali","price":70,"sort":101},{"category":"MEYVE SUYU & SÜT","name":"Cappy Portakal","price":70,"sort":102},{"category":"ENERJİ İÇECEKLERİ","name":"Monster Orjinal","price":90,"sort":103},{"category":"ENERJİ İÇECEKLERİ","name":"Monster Mango Loco","price":90,"sort":104},{"category":"ENERJİ İÇECEKLERİ","name":"Burn Orjinal Küçük","price":90,"sort":105},{"category":"ENERJİ İÇECEKLERİ","name":"Burn Orjinal Büyük","price":140,"sort":106},{"category":"KAHVALTI","name":"Kahvaltı Tabağı 1 Kişilik","price":260,"sort":107},{"category":"KAHVALTI","name":"Peynirli Sigara Böreği Porsiyon","price":40,"sort":108},{"category":"KAHVALTI","name":"Sahanda Tereyağlı Yumurta","price":90,"sort":109},{"category":"KAHVALTI","name":"Gözleme Porsiyon","price":180,"sort":110},{"category":"KAHVALTI","name":"Menemen Porsiyon","price":150,"sort":111},{"category":"KAHVALTI","name":"Haşlanmış Yumurta","price":50,"sort":112},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Şeftali","price":70,"sort":113},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Franbuaz Böğürtlen","price":70,"sort":114},{"category":"SOĞUK ÇAYLAR","name":"Lipton Ice Tea Mango & Egzotik Meyve 200 ml","price":60,"sort":115},{"category":"SOĞUK ÇAYLAR","name":"Lipton Sparkling Ice Tea Tropikal Meyve 330 ml","price":70,"sort":116},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea  Limon Aromalı","price":70,"sort":117},{"category":"SOĞUK ÇAYLAR","name":"Lipton Sparkling Ice Tea Limon & Yuzu 330 ml","price":70,"sort":118},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Karpuz","price":70,"sort":119},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Kavun-Çilek","price":70,"sort":120},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Mango-Ananas","price":70,"sort":121},{"category":"SOĞUK KAHVELER","name":"Ice Coffec Karamel","price":90,"sort":122},{"category":"SOĞUK KAHVELER","name":"Ice Americano","price":80,"sort":123},{"category":"SOĞUK KAHVELER","name":"Ice Latte","price":90,"sort":124},{"category":"SOĞUK KAHVELER","name":"Ice Mocha","price":100,"sort":125},{"category":"SOĞUK KAHVELER","name":"Ice White Chocolate","price":100,"sort":126},{"category":"BİTKİ ÇAYLARI","name":"Nane Limon","price":30,"sort":127},{"category":"BİTKİ ÇAYLARI","name":"Ihlamur","price":30,"sort":128},{"category":"BİTKİ ÇAYLARI","name":"Ada Çayı Bardak","price":30,"sort":129},{"category":"BİTKİ ÇAYLARI","name":"Kuşburnu","price":30,"sort":130},{"category":"BİTKİ ÇAYLARI","name":"Yeşil Çay","price":30,"sort":131},{"category":"LİMONATALAR","name":"Uludağ Limonata Şişe","price":75,"sort":132},{"category":"LİMONATALAR","name":"Büyük Ayran","price":30,"sort":133},{"category":"LİMONATALAR","name":"Uludağ Portakal","price":40,"sort":134},{"category":"LİMONATALAR","name":"Limonata - Küçük","price":15,"sort":135},{"category":"FROZEN","name":"Çarkıfelek&Orman Meyveli Frozen","price":170,"sort":136},{"category":"FROZEN","name":"Mango&Ananas Frozen","price":170,"sort":137},{"category":"FROZEN","name":"Yaban Mersinli Karadutlu Frozen","price":170,"sort":138},{"category":"FROZEN","name":"Muzlu Kavunlu Frozen","price":170,"sort":139},{"category":"FROZEN","name":"Çilek - Karpuz Elmalı  Frozen","price":170,"sort":140},{"category":"FROZEN","name":"Çilek - Karpuz Frozen","price":170,"sort":141},{"category":"FROZEN","name":"Limon Frozen","price":170,"sort":142},{"category":"FROZEN","name":"Portakal Frozen","price":170,"sort":143},{"category":"ÖZEL İÇECEKLER","name":"Churchill","price":90,"sort":144},{"category":"SU & SODA","name":"Freşa Elmalı Soda","price":30,"sort":145},{"category":"SU & SODA","name":"Freşa Karpuz Çilek Soda","price":30,"sort":146},{"category":"SU & SODA","name":"Freşa Limonlu Soda","price":30,"sort":147},{"category":"SU & SODA","name":"Uludağ Frutti Çeşitleri Soda","price":30,"sort":148},{"category":"SU & SODA","name":"Damla Maden Suyu","price":20,"sort":149},{"category":"SU & SODA","name":"Uludağ Frutti Karadut Frenk Üzümü","price":30,"sort":150},{"category":"SU & SODA","name":"Uludağ Frutti Mango Ananas","price":30,"sort":151},{"category":"SU & SODA","name":"Damla Su 0.5 Lt Cam Şişe","price":50,"sort":152},{"category":"SU & SODA","name":"Damla Limon Aromalı","price":30,"sort":153},{"category":"SU & SODA","name":"Beypazarı Karpuz & Çilek Aromalı Soda","price":30,"sort":154},{"category":"SU & SODA","name":"Beypazarı Limon Aromalı Soda","price":30,"sort":155},{"category":"SU & SODA","name":"Beypazarı Elma Aromalı Soda","price":30,"sort":156},{"category":"SU & SODA","name":"Su 1.5 Lt","price":20,"sort":157}]; const CATEGORY_ORDER=["ATIŞTIRMALIKLAR","TAZE SIKMA","BUZLAŞ ÇEŞİTLERİ","LİMONATALAR","SICAK KAHVELER","SICAK İÇECEKLER","SU & SODA","GAZLI İÇECEK","MILKSHAKE","DONDURMA","MEYVE SUYU & SÜT","ENERJİ İÇECEKLERİ","KAHVALTI","SOĞUK ÇAYLAR","SOĞUK KAHVELER","BİTKİ ÇAYLARI","FROZEN","ÖZEL İÇECEKLER"];
-const menuEl=document.getElementById('menu'),catsEl=document.getElementById('cats'),searchEl=document.getElementById('search'),totalBadge=document.getElementById('totalBadge');
-const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-const slug=s=>String(s||'').toLocaleLowerCase('tr-TR').replaceAll('ı','i').replaceAll('ğ','g').replaceAll('ü','u').replaceAll('ş','s').replaceAll('ö','o').replaceAll('ç','c').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-function money(v){const n=Number(v); return Number.isFinite(n)?n.toLocaleString('tr-TR')+' TL':esc(v)+' TL'}
-function render(q=''){q=q.trim().toLocaleLowerCase('tr-TR');const items=MENU_DATA.filter(x=>!q||(`${x.name} ${x.category}`).toLocaleLowerCase('tr-TR').includes(q)); totalBadge.textContent=`${items.length} ürün`; const cats=CATEGORY_ORDER.filter(c=>items.some(x=>x.category===c)); catsEl.innerHTML=cats.map(c=>`<button data-id="${slug(c)}">${esc(c)}</button>`).join(''); catsEl.querySelectorAll('button').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.id)?.scrollIntoView({behavior:'smooth'})); if(!items.length){menuEl.innerHTML='<div class="empty">Ürün bulunamadı.</div>';return} menuEl.innerHTML=cats.map(c=>{const list=items.filter(x=>x.category===c).sort((a,b)=>a.sort-b.sort);return `<section class="section" id="${slug(c)}"><div class="section-head"><h2>${esc(c)}</h2><small>${list.length} ürün</small></div><div class="menu-list">${list.map(x=>`<div class="menu-row"><div class="product-name">${esc(x.name)}</div><div class="price">${money(x.price)}</div></div>`).join('')}</div></section>`}).join('')}
-searchEl.addEventListener('input',e=>render(e.target.value)); render();
-</script></body></html>
+
+<header class="hero">
+  <div class="hero-card">
+    <div class="hero-inner">
+      <img class="logo" src="assets/logo.png" alt="Cafe Park">
+      <div class="brand">
+        <h1>Cafe Park</h1>
+        <div class="slogan">KAHVE • LEZZET • HUZUR</div>
+        <div class="place">15 Kasım Gürhan Ergüneş Parkı • Hassa</div>
+      </div>
+    </div>
+    <div class="hero-badges">
+      <span>QR Menü</span>
+      <span>Güncel Fiyatlar</span>
+      <span id="totalBadge">Yükleniyor…</span>
+    </div>
+  </div>
+</header>
+
+<div class="sticky">
+  <div class="sticky-inner">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="search" class="search" type="search" placeholder="Menüde ara… örn. latte, frozen, çay">
+    </div>
+    <div id="cats" class="cats"></div>
+  </div>
+</div>
+
+<main>
+  <div class="notice"><div><b>Cafe Park QR Menü</b><br><span>Ürün ve fiyatlar anlık güncellenir.</span></div><div>☕</div></div>
+
+  <div class="location-card">
+    <div class="location-title">📍 Cafe Park Hassa</div>
+    <div class="location-address">Girne, Dervişpaşa Blv., 31700 Hassa/Hatay</div>
+  </div>
+
+  <div class="contact-actions">
+    <a class="contact-btn maps" href="https://www.google.com/maps/search/?api=1&query=Park%20Cafe%20Hassa&query_place_id=ChIJ4yZhnK0JLxURwENGmf-IShE" target="_blank" rel="noopener">📍 Yol Tarifi / Haritada Aç</a>
+    <button id="shareLocationBtn" class="contact-btn share" type="button">↗ Adresi Paylaş</button>
+  </div>
+
+  <section id="featuredWrap" class="featured-wrap hidden">
+    <div class="section-title"><h2>✨ Öne Çıkanlar</h2><small>Özel seçimler</small></div>
+    <div id="featuredGrid" class="featured-grid"></div>
+  </section>
+
+  <div id="menu"><div class="loading">Menü yükleniyor…</div></div>
+</main>
+
+<div class="footer">
+  <div class="footer-box">
+    <div class="footer-brand"><b>Cafe Park Hassa</b><span>@cafeparkhassa</span></div>
+    <div style="display:flex;gap:7px">
+      <a class="instagram" href="https://www.google.com/maps/search/?api=1&query=Park%20Cafe%20Hassa&query_place_id=ChIJ4yZhnK0JLxURwENGmf-IShE" target="_blank" rel="noopener">Harita</a>
+      <a class="instagram" href="https://www.instagram.com/cafeparkhassa/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<button id="topBtn" class="top-btn hidden" type="button" aria-label="Yukarı çık">↑</button>
+
+<div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Kapat">×</button>
+    <img id="lightboxImg" alt="">
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCtjOlgnGjLbpW51Ttioo4gxMWSVZw16VM",
+  authDomain: "cafepark-d1ebf.firebaseapp.com",
+  databaseURL: "https://cafepark-d1ebf-default-rtdb.firebaseio.com",
+  projectId: "cafepark-d1ebf",
+  storageBucket: "cafepark-d1ebf.firebasestorage.app",
+  messagingSenderId: "649792859092",
+  appId: "1:649792859092:web:44b82ddc55d042a7134441"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
+const menuEl=document.getElementById("menu");
+const catsEl=document.getElementById("cats");
+const searchEl=document.getElementById("search");
+const featuredWrap=document.getElementById("featuredWrap");
+const featuredGrid=document.getElementById("featuredGrid");
+const totalBadge=document.getElementById("totalBadge");
+let all=[];
+const topBtn=document.getElementById("topBtn");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightboxImg");
+const lightboxClose=document.getElementById("lightboxClose");
+
+function bindImagePreview(){
+ document.querySelectorAll(".pic").forEach(img=>{
+   img.onclick=()=>{
+     lightboxImg.src=img.dataset.full||img.src;
+     lightbox.classList.remove("hidden");
+     document.body.style.overflow="hidden";
+   };
+ });
+}
+function closeLightbox(){
+ lightbox.classList.add("hidden");
+ lightboxImg.src="";
+ document.body.style.overflow="";
+}
+if(lightboxClose) lightboxClose.onclick=closeLightbox;
+if(lightbox) lightbox.onclick=e=>{ if(e.target===lightbox) closeLightbox(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeLightbox(); });
+
+if(topBtn) topBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+window.addEventListener("scroll",()=>{
+ if(topBtn) topBtn.classList.toggle("hidden",window.scrollY<500);
+});
+
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const slug=s=>String(s||"").toLocaleLowerCase("tr-TR").replaceAll("ı","i").replaceAll("ğ","g").replaceAll("ü","u").replaceAll("ş","s").replaceAll("ö","o").replaceAll("ç","c").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+const iconForCategory=c=>{
+ const s=String(c||"").toLocaleLowerCase("tr-TR");
+ if(s.includes("sıcak kahve")) return "☕";
+ if(s.includes("soğuk kahve")) return "🧋";
+ if(s.includes("bitki çay")) return "🍵";
+ if(s.includes("limonata")) return "🍋";
+ if(s.includes("frozen")) return "🧊";
+ if(s.includes("milkshake")) return "🥤";
+ if(s.includes("özel")) return "✨";
+ if(s.includes("sıcak içecek")) return "♨️";
+ if(s.includes("soğuk içecek")) return "🥤";
+ if(s.includes("su")) return "💧";
+ if(s.includes("atıştır")) return "🍿";
+ return "•";
+};
+const fallback="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Crect width='180' height='180' fill='%23f3ead8'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' font-size='56'%3E☕%3C/text%3E%3C/svg%3E";
+
+function card(x,showCat=false){
+ return `<article class="card"><div class="card-inner">
+  <img class="pic" src="${x.imageUrl||fallback}" data-full="${x.imageUrl||fallback}" alt="${esc(x.name)}" loading="lazy">
+  <div>
+   <div class="name">${esc(x.name)}</div>
+   ${x.description?`<div class="desc">${esc(x.description)}</div>`:""}
+   <div class="badges">
+    ${x.featured?'<span class="badge featured">★ ÖNE ÇIKAN</span>':""}
+    ${showCat?`<span class="badge cat">${esc(x.category)}</span>`:""}
+   </div>
+  </div>
+  <div class="price">${Number(x.price||0).toLocaleString("tr-TR")} ₺</div>
+ </div></article>`;
+}
+
+function render(q=""){
+ q=q.trim().toLocaleLowerCase("tr-TR");
+ const items=all.filter(x=>x.active!==false && (!q || `${x.name||""} ${x.category||""} ${x.description||""}`.toLocaleLowerCase("tr-TR").includes(q)));
+ totalBadge.textContent=`${items.length} ürün`;
+
+ const featured=items.filter(x=>x.featured);
+ if(featured.length){
+  featuredWrap.classList.remove("hidden");
+  featuredGrid.innerHTML=featured.map(x=>card(x,true)).join("");
+ } else {
+  featuredWrap.classList.add("hidden");
+  featuredGrid.innerHTML="";
+ }
+
+ const cats=[...new Set(items.map(x=>x.category).filter(Boolean))];
+ catsEl.innerHTML=cats.map(c=>`<button data-id="${slug(c)}">${iconForCategory(c)} ${esc(c)}</button>`).join("");
+ catsEl.querySelectorAll("button").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.id)?.scrollIntoView({behavior:"smooth"}));
+
+ if(!items.length){menuEl.innerHTML='<div class="empty">Ürün bulunamadı.</div>';return;}
+
+ menuEl.innerHTML=cats.map(c=>{
+   const list=items.filter(x=>x.category===c).sort((a,b)=>Number(a.sort||0)-Number(b.sort||0));
+   return `<section class="section" id="${slug(c)}">
+    <div class="section-title"><h2>${iconForCategory(c)} ${esc(c)}</h2><small>${list.length} ürün</small></div>
+    <div class="grid">${list.map(x=>card(x)).join("")}</div>
+   </section>`;
+ }).join("");
+
+ bindImagePreview();
+
+ const sections=[...document.querySelectorAll(".section")];
+ const buttons=[...catsEl.querySelectorAll("button")];
+ if(window._catObserver) window._catObserver.disconnect();
+ window._catObserver=new IntersectionObserver(entries=>{
+   const visible=entries
+     .filter(e=>e.isIntersecting)
+     .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+   if(!visible) return;
+   buttons.forEach(b=>b.classList.toggle("active",b.dataset.id===visible.target.id));
+ },{rootMargin:"-140px 0px -55% 0px",threshold:[0,.15,.4]});
+ sections.forEach(s=>window._catObserver.observe(s));
+}
+
+
+const TARGET_MENU=[{"category":"ATIŞTIRMALIKLAR","name":"Kaşarlı Tost","price":100,"sort":1},{"category":"ATIŞTIRMALIKLAR","name":"Karışık Tost","price":100,"sort":2},{"category":"ATIŞTIRMALIKLAR","name":"Sucuklu Tost","price":100,"sort":3},{"category":"ATIŞTIRMALIKLAR","name":"Popcorn","price":30,"sort":4},{"category":"TAZE SIKMA","name":"Sıkma Portakal Suyu","price":150,"sort":5},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Çilek - Karpuz Buzlaş","price":30,"sort":6},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Limon Buzlaş","price":30,"sort":7},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Karışık Buzlaş","price":30,"sort":8},{"category":"BUZLAŞ ÇEŞİTLERİ","name":"Portakal Buzlaş","price":30,"sort":9},{"category":"LİMONATALAR","name":"Limonata - Limon","price":30,"sort":10},{"category":"LİMONATALAR","name":"Mohito","price":130,"sort":11},{"category":"LİMONATALAR","name":"Limonata - Vişne","price":30,"sort":12},{"category":"SICAK KAHVELER","name":"Double Türk Kahvesi","price":120,"sort":13},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Az Şekerli","price":80,"sort":14},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Sade","price":80,"sort":14},{"category":"SICAK KAHVELER","name":"Türk Kahvesi Orta","price":80,"sort":15},{"category":"SICAK İÇECEKLER","name":"Çay","price":10,"sort":16},{"category":"SU & SODA","name":"Sade Soda","price":20,"sort":17},{"category":"SU & SODA","name":"Su 0.5 Lt","price":10,"sort":18},{"category":"SICAK İÇECEKLER","name":"Fincan Çay","price":30,"sort":19},{"category":"SICAK İÇECEKLER","name":"Sıcak Süt","price":60,"sort":20},{"category":"SICAK İÇECEKLER","name":"Sıcak Çikolata","price":70,"sort":21},{"category":"SICAK İÇECEKLER","name":"Salep","price":50,"sort":22},{"category":"SICAK İÇECEKLER","name":"Orelet Nar","price":30,"sort":23},{"category":"SICAK İÇECEKLER","name":"Orelet Kivi","price":30,"sort":24},{"category":"SICAK İÇECEKLER","name":"Orelet Limon","price":30,"sort":25},{"category":"SICAK İÇECEKLER","name":"Orelet Kuşburnu","price":30,"sort":26},{"category":"SICAK İÇECEKLER","name":"Orelet Nane Limon","price":30,"sort":27},{"category":"SICAK İÇECEKLER","name":"Orelet Elma Aromalı Karışık","price":30,"sort":28},{"category":"SICAK KAHVELER","name":"Sütlü Türk Kahvesi","price":100,"sort":29},{"category":"SICAK KAHVELER","name":"Osmanlı Dibek Kahvesi","price":60,"sort":30},{"category":"SICAK KAHVELER","name":"Menengiç Damla Sakızlı Kahvesi","price":60,"sort":31},{"category":"SICAK KAHVELER","name":"Nescafe","price":30,"sort":32},{"category":"SICAK KAHVELER","name":"Sütlü Nescafe Bardak","price":30,"sort":33},{"category":"SICAK KAHVELER","name":"Espresso","price":70,"sort":34},{"category":"SICAK KAHVELER","name":"Double Espresso","price":90,"sort":35},{"category":"SICAK KAHVELER","name":"Coffee / Kahve","price":80,"sort":36},{"category":"SICAK KAHVELER","name":"Kahve X2","price":110,"sort":37},{"category":"SICAK KAHVELER","name":"Americano-Nescafe","price":90,"sort":38},{"category":"SICAK KAHVELER","name":"Ristretto","price":70,"sort":39},{"category":"SICAK KAHVELER","name":"Demlik Kahve","price":80,"sort":40},{"category":"SICAK KAHVELER","name":"Cappuccino","price":100,"sort":41},{"category":"SICAK KAHVELER","name":"Süvari Türk Kahvesi","price":80,"sort":42},{"category":"SICAK KAHVELER","name":"Double Cappuccino","price":120,"sort":43},{"category":"SICAK KAHVELER","name":"Latte Macchiato","price":110,"sort":44},{"category":"SICAK KAHVELER","name":"Double Latte Macchiato","price":130,"sort":45},{"category":"SICAK KAHVELER","name":"Flat White","price":110,"sort":46},{"category":"SICAK KAHVELER","name":"Flat White X2","price":130,"sort":47},{"category":"GAZLI İÇECEK","name":"Sprite","price":70,"sort":48},{"category":"GAZLI İÇECEK","name":"Pepsi Kutu 330 ml","price":70,"sort":49},{"category":"GAZLI İÇECEK","name":"Fanta 330 ml Kutu Kola","price":70,"sort":50},{"category":"GAZLI İÇECEK","name":"Coca-Cola 330 ml Kutu Kola","price":70,"sort":51},{"category":"GAZLI İÇECEK","name":"Fanta 200 ml Cam Şişe Kola","price":45,"sort":52},{"category":"GAZLI İÇECEK","name":"Coca-Cola 200 ml Cam Şişe Kola","price":45,"sort":53},{"category":"GAZLI İÇECEK","name":"Fanta 2.5 Lt","price":100,"sort":54},{"category":"GAZLI İÇECEK","name":"Coca-Cola 2.5 Lt","price":100,"sort":55},{"category":"GAZLI İÇECEK","name":"Coca-Cola 1 Lt","price":70,"sort":56},{"category":"GAZLI İÇECEK","name":"Fanta 1 Lt","price":80,"sort":57},{"category":"GAZLI İÇECEK","name":"Fruga Gazoz 250 ml","price":30,"sort":58},{"category":"GAZLI İÇECEK","name":"Pepsi 450 ml","price":35,"sort":59},{"category":"GAZLI İÇECEK","name":"Pepsi 1 L","price":80,"sort":60},{"category":"GAZLI İÇECEK","name":"Pepsi 1,5 L","price":90,"sort":61},{"category":"GAZLI İÇECEK","name":"Pepsi 2,5 L","price":110,"sort":62},{"category":"GAZLI İÇECEK","name":"Yedigün Portakallı Gazoz 330 ml","price":70,"sort":63},{"category":"GAZLI İÇECEK","name":"Yedigün Portakallı Gazoz 1 L","price":85,"sort":64},{"category":"MILKSHAKE","name":"Karamel Milkshake","price":180,"sort":65},{"category":"MILKSHAKE","name":"Mango Milkshake","price":180,"sort":66},{"category":"MILKSHAKE","name":"Kivi Milkshake","price":180,"sort":67},{"category":"MILKSHAKE","name":"Çilek Milkshake","price":180,"sort":68},{"category":"MILKSHAKE","name":"Vanilya Milkshake","price":180,"sort":69},{"category":"MILKSHAKE","name":"Çikolata Milkshake","price":180,"sort":70},{"category":"MILKSHAKE","name":"Çikolata Parçacıklı Milkshake","price":180,"sort":71},{"category":"MILKSHAKE","name":"Çilek Parçacıklı Milkshake","price":180,"sort":72},{"category":"MILKSHAKE","name":"Mevye Parçacıklı Milkshake","price":180,"sort":74},{"category":"MILKSHAKE","name":"Orman Meyveli Milkshake","price":180,"sort":75},{"category":"DONDURMA","name":"Max Twister Forest Promo","price":15,"sort":76},{"category":"DONDURMA","name":"Algida Classic CL Vanilya","price":20,"sort":77},{"category":"DONDURMA","name":"Algida CLS CL","price":20,"sort":78},{"category":"DONDURMA","name":"Cornetto Keyif CL","price":25,"sort":79},{"category":"DONDURMA","name":"Algida Maraş","price":40,"sort":80},{"category":"DONDURMA","name":"Cornetto Classico","price":50,"sort":81},{"category":"DONDURMA","name":"Algida Volcano","price":50,"sort":82},{"category":"DONDURMA","name":"Algida Nogger","price":65,"sort":83},{"category":"DONDURMA","name":"Cornetto Disc Double A","price":75,"sort":84},{"category":"DONDURMA","name":"Cornetto Disc Van","price":75,"sort":85},{"category":"DONDURMA","name":"Magnum","price":90,"sort":86},{"category":"DONDURMA","name":"Magnum Classic","price":90,"sort":87},{"category":"DONDURMA","name":"Magnum Double","price":90,"sort":88},{"category":"MEYVE SUYU & SÜT","name":"Tamek Şeftali Meyve Suyu","price":20,"sort":89},{"category":"MEYVE SUYU & SÜT","name":"Cappy Atom 1 Lt","price":80,"sort":90},{"category":"MEYVE SUYU & SÜT","name":"Cappy Şeftali 1 Lt","price":70,"sort":91},{"category":"MEYVE SUYU & SÜT","name":"Meysu Şeftali 200 ml","price":20,"sort":92},{"category":"MEYVE SUYU & SÜT","name":"Sütaş Çikolatalı Süt","price":20,"sort":93},{"category":"MEYVE SUYU & SÜT","name":"Cappy Karışık Meyve","price":70,"sort":94},{"category":"MEYVE SUYU & SÜT","name":"Cappy Atom","price":70,"sort":95},{"category":"MEYVE SUYU & SÜT","name":"Cappy Kayısı","price":70,"sort":96},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Şeftali 330 ml","price":70,"sort":97},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Karışık Meyve 330 ml","price":70,"sort":98},{"category":"MEYVE SUYU & SÜT","name":"Tropicana Vişne 330 ml","price":70,"sort":99},{"category":"MEYVE SUYU & SÜT","name":"Cappy Vişne","price":70,"sort":100},{"category":"MEYVE SUYU & SÜT","name":"Cappy Şeftali","price":70,"sort":101},{"category":"MEYVE SUYU & SÜT","name":"Cappy Portakal","price":70,"sort":102},{"category":"ENERJİ İÇECEKLERİ","name":"Monster Orjinal","price":90,"sort":103},{"category":"ENERJİ İÇECEKLERİ","name":"Monster Mango Loco","price":90,"sort":104},{"category":"ENERJİ İÇECEKLERİ","name":"Burn Orjinal Küçük","price":90,"sort":105},{"category":"ENERJİ İÇECEKLERİ","name":"Burn Orjinal Büyük","price":140,"sort":106},{"category":"KAHVALTI","name":"Kahvaltı Tabağı 1 Kişilik","price":260,"sort":107},{"category":"KAHVALTI","name":"Peynirli Sigara Böreği Porsiyon","price":40,"sort":108},{"category":"KAHVALTI","name":"Sahanda Tereyağlı Yumurta","price":90,"sort":109},{"category":"KAHVALTI","name":"Gözleme Porsiyon","price":180,"sort":110},{"category":"KAHVALTI","name":"Menemen Porsiyon","price":150,"sort":111},{"category":"KAHVALTI","name":"Haşlanmış Yumurta","price":50,"sort":112},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Şeftali","price":70,"sort":113},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Franbuaz Böğürtlen","price":70,"sort":114},{"category":"SOĞUK ÇAYLAR","name":"Lipton Ice Tea Mango & Egzotik Meyve 200 ml","price":60,"sort":115},{"category":"SOĞUK ÇAYLAR","name":"Lipton Sparkling Ice Tea Tropikal Meyve 330 ml","price":70,"sort":116},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea  Limon Aromalı","price":70,"sort":117},{"category":"SOĞUK ÇAYLAR","name":"Lipton Sparkling Ice Tea Limon & Yuzu 330 ml","price":70,"sort":118},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Karpuz","price":70,"sort":119},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Kavun-Çilek","price":70,"sort":120},{"category":"SOĞUK ÇAYLAR","name":"Fuse Tea Mango-Ananas","price":70,"sort":121},{"category":"SOĞUK KAHVELER","name":"Ice Coffec Karamel","price":90,"sort":122},{"category":"SOĞUK KAHVELER","name":"Ice Americano","price":80,"sort":123},{"category":"SOĞUK KAHVELER","name":"Ice Latte","price":90,"sort":124},{"category":"SOĞUK KAHVELER","name":"Ice Mocha","price":100,"sort":125},{"category":"SOĞUK KAHVELER","name":"Ice White Chocolate","price":100,"sort":126},{"category":"BİTKİ ÇAYLARI","name":"Nane Limon","price":30,"sort":127},{"category":"BİTKİ ÇAYLARI","name":"Ihlamur","price":30,"sort":128},{"category":"BİTKİ ÇAYLARI","name":"Ada Çayı Bardak","price":30,"sort":129},{"category":"BİTKİ ÇAYLARI","name":"Kuşburnu","price":30,"sort":130},{"category":"BİTKİ ÇAYLARI","name":"Yeşil Çay","price":30,"sort":131},{"category":"LİMONATALAR","name":"Uludağ Limonata Şişe","price":75,"sort":132},{"category":"LİMONATALAR","name":"Büyük Ayran","price":30,"sort":133},{"category":"LİMONATALAR","name":"Uludağ Portakal","price":40,"sort":134},{"category":"LİMONATALAR","name":"Limonata - Küçük","price":15,"sort":135},{"category":"FROZEN","name":"Çarkıfelek&Orman Meyveli Frozen","price":170,"sort":136},{"category":"FROZEN","name":"Mango&Ananas Frozen","price":170,"sort":137},{"category":"FROZEN","name":"Yaban Mersinli Karadutlu Frozen","price":170,"sort":138},{"category":"FROZEN","name":"Muzlu Kavunlu Frozen","price":170,"sort":139},{"category":"FROZEN","name":"Çilek - Karpuz Elmalı  Frozen","price":170,"sort":140},{"category":"FROZEN","name":"Çilek - Karpuz Frozen","price":170,"sort":141},{"category":"FROZEN","name":"Limon Frozen","price":170,"sort":142},{"category":"FROZEN","name":"Portakal Frozen","price":170,"sort":143},{"category":"ÖZEL İÇECEKLER","name":"Churchill","price":90,"sort":144},{"category":"SU & SODA","name":"Freşa Elmalı Soda","price":30,"sort":145},{"category":"SU & SODA","name":"Freşa Karpuz Çilek Soda","price":30,"sort":146},{"category":"SU & SODA","name":"Freşa Limonlu Soda","price":30,"sort":147},{"category":"SU & SODA","name":"Uludağ Frutti Çeşitleri Soda","price":30,"sort":148},{"category":"SU & SODA","name":"Damla Maden Suyu","price":20,"sort":149},{"category":"SU & SODA","name":"Uludağ Frutti Karadut Frenk Üzümü","price":30,"sort":150},{"category":"SU & SODA","name":"Uludağ Frutti Mango Ananas","price":30,"sort":151},{"category":"SU & SODA","name":"Damla Su 0.5 Lt Cam Şişe","price":50,"sort":152},{"category":"SU & SODA","name":"Damla Limon Aromalı","price":30,"sort":153},{"category":"SU & SODA","name":"Beypazarı Karpuz & Çilek Aromalı Soda","price":30,"sort":154},{"category":"SU & SODA","name":"Beypazarı Limon Aromalı Soda","price":30,"sort":155},{"category":"SU & SODA","name":"Beypazarı Elma Aromalı Soda","price":30,"sort":156},{"category":"SU & SODA","name":"Su 1.5 Lt","price":20,"sort":157}];
+
+function normName(s){
+ return String(s||"").trim().toLocaleLowerCase("tr-TR")
+   .replace(/\s+/g," ");
+}
+function findSourceForTarget(t, source){
+ const exact=source.find(x=>normName(x.name)===normName(t.name));
+ if(exact) return exact;
+
+ // Renamed/new products: reuse the closest existing product photo.
+ const aliases={
+   "ice coffec karamel":"ice coffec",
+   "double türk kahvesi":"türk kahvesi orta"
+ };
+ const alias=aliases[normName(t.name)];
+ return alias ? source.find(x=>normName(x.name)===alias) : null;
+}
+
+searchEl.addEventListener("input",e=>render(e.target.value));
+
+onSnapshot(collection(db,"menu"),snap=>{
+ const source=snap.docs.map(d=>({id:d.id,...d.data()}));
+ all=TARGET_MENU.map((t,i)=>{
+   const old=findSourceForTarget(t,source);
+   return {
+     ...t,
+     sort:i+1,
+     active:true,
+     imageUrl:old?.imageUrl||"",
+     description:old?.description||"",
+     featured:old?.featured||false
+   };
+ });
+ render(searchEl.value);
+},err=>{
+ console.error(err);
+ menuEl.innerHTML=`<div class="error">Menü yüklenemedi.<br><small>${esc(err.message)}</small></div>`;
+});
+</script>
+</body>
+</html>
